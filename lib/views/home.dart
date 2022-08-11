@@ -65,7 +65,91 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-            // ROWS E GESTURE DETECTOR
+
+            // NOVAS ROWS E GESTURE DETECTORS
+            Row(
+              children: [
+                GestureDetector(
+                  child: Expanded(
+                      child: Container(
+                    width: MediaQuery.of(context).size.width - 32,
+                    height: 80,
+                    margin: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      border:
+                          Border.all(width: 2, color: AppColorPalette.black),
+                      borderRadius: BorderRadius.circular(8),
+                      image: DecorationImage(
+                        image: AssetImage(
+                            "assets/system_images/cardapio-button-wallpaper-02.jpg"
+                        ),
+                        fit: BoxFit.cover,
+                        filterQuality: FilterQuality.low,
+                      ),
+                    ),
+                    child: Center(
+                        child: Text(
+                      "Cardápio",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: AppColorPalette.black,
+                      ),
+                    )),
+                  )),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                GestureDetector(
+                  child: Expanded(
+                      child: Container(
+                    width: MediaQuery.of(context).size.width - 32,
+                    height: 80,
+                    margin: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      border:
+                          Border.all(width: 2, color: AppColorPalette.black),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                        child: Text(
+                      "Olá, Mundo!",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )),
+                  )),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                GestureDetector(
+                  child: Expanded(
+                      child: Container(
+                    width: MediaQuery.of(context).size.width - 32,
+                    height: 80,
+                    margin: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      border:
+                          Border.all(width: 2, color: AppColorPalette.black),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                        child: Text(
+                      "Olá, Mundo!",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )),
+                  )),
+                ),
+              ],
+            ),
           ],
         ),
       ),
