@@ -54,26 +54,3 @@ class _TabbarState extends State<Tabbar> {
     );
   }
 }
-
-/* 
-  body: Stack(
-        children: [
-          renderView(0, const HomeView()),
-          renderView(1, const CardapioView()),
-          renderView(2, const PedidoView()),
-          renderView(3, const ProfileView()),
-        ],
-      ),
-*/
-
-/*
-  Widget renderView(tabIndex, currentView) {
-    return IgnorePointer(
-      ignoring: currentIndex != tabIndex,
-      child: Opacity(
-        opacity: currentIndex == tabIndex ? 1 : 0,
-        child: currentView,
-      ),
-    );
-  }
-*/
