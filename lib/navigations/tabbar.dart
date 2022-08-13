@@ -6,17 +6,32 @@ import 'package:cantina_jit/views/pedido.dart';
 import 'package:cantina_jit/views/profile.dart';
 
 class Tabbar extends StatefulWidget {
-  const Tabbar({Key? key}) : super(key: key);
+  final int setCurrentIndex;
+
+  const Tabbar({required int setCurrentIndex}) : this.setCurrentIndex = setCurrentIndex;
+
 
   @override
-  State<Tabbar> createState() => _TabbarState();
+  State<Tabbar> createState() => _TabbarState(setCurrentIndex);
 }
 
 class _TabbarState extends State<Tabbar> {
 
-  final String _title = "Aqui fica o nome da escola";
-  int _selectedTab = 0;
+  _TabbarState(this.currentIndex);
 
+  final String _title = "Aqui fica o nome da escola";
+  int currentIndex = 0;
+  final views = [
+    HomeView(),
+    CardapioView(),
+    PedidoView(),
+    ProfileView(),
+  ];
+
+  /*
+    TODO:
+    1. Separar APPBAR; 2. SEPARAR BOTTOM NAVBAR; 3 CONTINUAR PROGRAMAÇÃO
+  */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,17 +42,8 @@ class _TabbarState extends State<Tabbar> {
         backgroundColor: AppColorPalette.redMain,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedTab,
-        onTap: (index) {
-          setState(() {
-            this._selectedTab = index;
-          });
-        },
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: AppColorPalette.white,
-        selectedItemColor: AppColorPalette.redMain,
-        unselectedItemColor: AppColorPalette.blackAux,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+        currentIndex: currentIndex,
+        onTap: (index) => setState(() => currentIndex = index),
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined), label: "Início"),
@@ -48,24 +54,15 @@ class _TabbarState extends State<Tabbar> {
           BottomNavigationBarItem(
               icon: Icon(Icons.person_rounded), label: "Perfil"),
         ],
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: AppColorPalette.white,
+        selectedItemColor: AppColorPalette.redMain,
+        unselectedItemColor: AppColorPalette.blackAux,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
       ),
-      body: Stack(
-        children: [
-          renderView(0, HomeView()),
-          renderView(1, CardapioView()),
-          renderView(2, PedidoView()),
-          renderView(3, ProfileView()),
-        ],
-      ),
-    );
-  }
-
-  Widget renderView(tabIndex, currentView) {
-    return IgnorePointer(
-      ignoring: _selectedTab != tabIndex,
-      child: Opacity(
-        opacity: _selectedTab == tabIndex ? 1 : 0,
-        child: currentView,
+      body: IndexedStack(
+        index: currentIndex,
+        children: views,
       ),
     );
   }

@@ -18,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Tabbar(),
+      home: Tabbar(setCurrentIndex: 0,),
     );
   }
 }
