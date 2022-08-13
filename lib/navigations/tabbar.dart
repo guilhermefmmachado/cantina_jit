@@ -13,9 +13,14 @@ class Tabbar extends StatefulWidget {
 }
 
 class _TabbarState extends State<Tabbar> {
-
   final String _title = "Aqui fica o nome da escola";
-  int _selectedTab = 0;
+  int currentIndex = 0;
+  final views = [
+    HomeView(),
+    CardapioView(),
+    PedidoView(),
+    ProfileView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,47 +31,49 @@ class _TabbarState extends State<Tabbar> {
         centerTitle: true,
         backgroundColor: AppColorPalette.redMain,
       ),
+      body: IndexedStack(children: views, index: currentIndex,),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedTab,
-        onTap: (index) {
-          setState(() {
-            this._selectedTab = index;
-          });
-        },
+        currentIndex: currentIndex,
+        onTap: (index) => setState(() => currentIndex = index),
         type: BottomNavigationBarType.fixed,
         backgroundColor: AppColorPalette.white,
         selectedItemColor: AppColorPalette.redMain,
         unselectedItemColor: AppColorPalette.blackAux,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined), label: "Início"),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.menu_book_rounded), label: "Cardápio"),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.room_service_outlined), label: "Pedido"),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.person_rounded), label: "Perfil"),
         ],
-      ),
-      body: Stack(
-        children: [
-          renderView(0, HomeView()),
-          renderView(1, CardapioView()),
-          renderView(2, PedidoView()),
-          renderView(3, ProfileView()),
-        ],
-      ),
-    );
-  }
-
-  Widget renderView(tabIndex, currentView) {
-    return IgnorePointer(
-      ignoring: _selectedTab != tabIndex,
-      child: Opacity(
-        opacity: _selectedTab == tabIndex ? 1 : 0,
-        child: currentView,
       ),
     );
   }
 }
+
+/* 
+  body: Stack(
+        children: [
+          renderView(0, const HomeView()),
+          renderView(1, const CardapioView()),
+          renderView(2, const PedidoView()),
+          renderView(3, const ProfileView()),
+        ],
+      ),
+*/
+
+/*
+  Widget renderView(tabIndex, currentView) {
+    return IgnorePointer(
+      ignoring: currentIndex != tabIndex,
+      child: Opacity(
+        opacity: currentIndex == tabIndex ? 1 : 0,
+        child: currentView,
+      ),
+    );
+  }
+*/
