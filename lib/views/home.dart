@@ -1,4 +1,5 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
+import 'package:cantina_jit/widgets/home_bttn_receber_pedido.dart';
 import 'package:cantina_jit/widgets/home_header.dart';
 import 'package:cantina_jit/widgets/home_nav_button.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +38,9 @@ class _HomeViewState extends State<HomeView> {
               height: 240,
               margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
-                  color: AppColorPalette.white,
-                  border: Border.all(color: AppColorPalette.black)),
+                color: AppColorPalette.white,
+                borderRadius: BorderRadius.circular(4),
+              ),
               child: Column(
                 children: [
                   Container(
@@ -132,54 +134,6 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
-
-class BttnReceberPedido extends StatefulWidget {
-  // Eu sei que esse botão tem um único objetivo, abrir a janela para receber pedido, só.
-  final bool isEnabled;
-
-  const BttnReceberPedido({
-    Key? key,
-    required this.isEnabled,
-  }) : super(key: key);
-
-  @override
-  State<BttnReceberPedido> createState() => _BttnReceberPedidoState();
-}
-
-class _BttnReceberPedidoState extends State<BttnReceberPedido> {
-  receberPedido() {
-    return print("Olá, Mundo");
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      child: Text(
-        "Receber pedido",
-        textAlign: TextAlign.center,
-      ),
-      style: ElevatedButton.styleFrom(
-        primary: AppColorPalette.redMain,
-      ),
-      onPressed: widget.isEnabled ? (() => receberPedido()) : null,
-    );
-  }
-}
-
-/*
-  ElevatedButton(
-    onPressed: (() => print("Olá, Mundo!")),
-    child: Text(
-      "Receber pedido",
-      textAlign: TextAlign.center,
-    ),
-    style: ElevatedButton.styleFrom(
-      primary: AppColorPalette.redMain,
-    ),
-  ),
-
-  onPressed: (() => print("Olá, Mundo!")),
-*/
 
 /* 
   TODO: Estilizar melhor o HOMENAVBUTTON;
