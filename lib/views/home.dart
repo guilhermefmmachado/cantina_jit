@@ -32,7 +32,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-            HomeNavButton(),
+            HomeNavButton(imgPath: "assets/system_images/cardapio-button-wallpaper-02.jpg", text: "Cardápio", actorLevel: 1,),
             Container(
               width: MediaQuery.of(context).size.width - 32,
               height: 240,
@@ -126,8 +126,9 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             // NOVAS ROWS E GESTURE DETECTORS
-            HomeNavButton(),
-            HomeNavButton(),
+            HomeNavButton(imgPath: "assets/system_images/cardapio-button-wallpaper-02.jpg", text: "Cardápio", actorLevel: 1,),
+            HomeNavButton(imgPath: "assets/system_images/home-wallpaper.jpg", text: "Programando vendo RLCS ^-^", actorLevel: 1,),
+            HomeNavButton(imgPath: "assets/system_images/home-wallpaper.jpg", text: "LAIVE SHARE", actorLevel: 3,),
           ],
         ),
       ),
@@ -142,6 +143,7 @@ class _HomeViewState extends State<HomeView> {
   TODO: Iniciar design da tela de perfil;
   TODO: Iniciar design das telas de histórico;
   TODO: BACKEND
+  TODO: SLIDES
   TODO: LOGIN E CADASTRO
 
   ! TUDO AQUI TEM SUBTAREFA E O TEMPO É CURTO! SEJA SÁBIO!

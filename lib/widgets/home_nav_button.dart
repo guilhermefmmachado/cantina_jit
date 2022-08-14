@@ -4,8 +4,15 @@ import 'package:cantina_jit/views/cardapio.dart';
 import 'package:flutter/material.dart';
 
 class HomeNavButton extends StatefulWidget {
+  final String imgPath;
+  final String text;
+  final int actorLevel;
+
   const HomeNavButton({
     Key? key,
+    required this.imgPath,
+    required this.text,
+    required this.actorLevel,
   }) : super(key: key);
 
   @override
@@ -13,13 +20,20 @@ class HomeNavButton extends StatefulWidget {
 }
 
 class _HomeNavButtonState extends State<HomeNavButton> {
+  final List<String> actors = [
+    "Visitante",
+    "Cliente",
+    "Funcionário",
+    "Gerente",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         GestureDetector(
           onTap: () {
-            // Navigator.push(context, MaterialPageRoute(builder: (context) => Tabbar(setCurrentIndex: 1,)));
+            print("Funciona");
           },
           child: Expanded(
             child: Container(
@@ -30,8 +44,7 @@ class _HomeNavButtonState extends State<HomeNavButton> {
                 border: Border.all(color: AppColorPalette.black, width: 2),
                 borderRadius: BorderRadius.circular(8),
                 image: DecorationImage(
-                  image: AssetImage(
-                      "assets/system_images/cardapio-button-wallpaper-02.jpg"),
+                  image: AssetImage(widget.imgPath),
                   fit: BoxFit.cover,
                   filterQuality: FilterQuality.low,
                   colorFilter: ColorFilter.mode(
@@ -40,7 +53,7 @@ class _HomeNavButtonState extends State<HomeNavButton> {
               ),
               child: Center(
                 child: Text(
-                  "Cardápio",
+                  widget.text,
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
