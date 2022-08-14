@@ -11,6 +11,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  String estadoPedido = "não realizado";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +31,98 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-
+            HomeNavButton(),
+            Container(
+              width: MediaQuery.of(context).size.width - 32,
+              height: 240,
+              margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                  color: AppColorPalette.white,
+                  border: Border.all(color: AppColorPalette.black)),
+              child: Column(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 32,
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    margin: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: AppColorPalette.whiteAux,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            text: "Pedido atual ",
+                            style: TextStyle(
+                              color: AppColorPalette.greenMain,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "${estadoPedido}",
+                                style: TextStyle(
+                                  color: AppColorPalette.black,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                              TextSpan(text: "."),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 150,
+                    margin: EdgeInsets.all(8),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            height: 150,
+                            margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: AppColorPalette.whiteAux,
+                            ),
+                            child: RichText(
+                              text: TextSpan(
+                                text: "Dados do pedido atual:\n",
+                                style: TextStyle(
+                                  color: AppColorPalette.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: AppColorPalette.whiteAux,
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: BttnReceberPedido(
+                                  isEnabled: true,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
             // NOVAS ROWS E GESTURE DETECTORS
             HomeNavButton(),
             HomeNavButton(),
@@ -39,3 +132,63 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
+
+class BttnReceberPedido extends StatefulWidget {
+  // Eu sei que esse botão tem um único objetivo, abrir a janela para receber pedido, só.
+  final bool isEnabled;
+
+  const BttnReceberPedido({
+    Key? key,
+    required this.isEnabled,
+  }) : super(key: key);
+
+  @override
+  State<BttnReceberPedido> createState() => _BttnReceberPedidoState();
+}
+
+class _BttnReceberPedidoState extends State<BttnReceberPedido> {
+  receberPedido() {
+    return print("Olá, Mundo");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: Text(
+        "Receber pedido",
+        textAlign: TextAlign.center,
+      ),
+      style: ElevatedButton.styleFrom(
+        primary: AppColorPalette.redMain,
+      ),
+      onPressed: widget.isEnabled ? (() => receberPedido()) : null,
+    );
+  }
+}
+
+/*
+  ElevatedButton(
+    onPressed: (() => print("Olá, Mundo!")),
+    child: Text(
+      "Receber pedido",
+      textAlign: TextAlign.center,
+    ),
+    style: ElevatedButton.styleFrom(
+      primary: AppColorPalette.redMain,
+    ),
+  ),
+
+  onPressed: (() => print("Olá, Mundo!")),
+*/
+
+/* 
+  TODO: Estilizar melhor o HOMENAVBUTTON;
+  TODO: Iniciar design do cardápio;
+  TODO: Iniciar design da tela de pedido;
+  TODO: Iniciar design da tela de perfil;
+  TODO: Iniciar design das telas de histórico;
+  TODO: BACKEND
+  TODO: LOGIN E CADASTRO
+
+  ! TUDO AQUI TEM SUBTAREFA E O TEMPO É CURTO! SEJA SÁBIO!
+*/
