@@ -1,24 +1,7 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
-import 'package:cantina_jit/models/cardapio_model.dart';
+import 'package:cantina_jit/widgets/cardapios_tab.dart';
+import 'package:cantina_jit/widgets/contudo_cardapios_tab.dart';
 import 'package:flutter/material.dart';
-
-/*
-class CardapioView extends StatefulWidget {
-  const CardapioView({ Key? key }) : super(key: key);
-
-  @override
-  State<CardapioView> createState() => _CardapioViewState();
-}
-
-class _CardapioViewState extends State<CardapioView> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text("Cardápio Funciona!"),),
-    );
-  }
-}
-*/
 
 class CardapioView extends StatefulWidget {
   const CardapioView({Key? key}) : super(key: key);
@@ -30,26 +13,13 @@ class CardapioView extends StatefulWidget {
 class _CardapioViewState extends State<CardapioView>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  var cardapio = CardapioModel(["Salgados", "Doces", "Bebidas"]);
 
-  List<Widget> categoriasCardapio = List.generate(cardapio.categorias.length,
-      (index) => TabCategoria(title: categorias[index]));
-
-  List<Widget> categoriasViews = [
-    ProdutosCategoria(),
-    ProdutosCategoria(),
-    ProdutosCategoria(),
-    ProdutosCategoria(),
-  ];
+  List<Widget> tabsCardapio = [];
 
   @override
   void initState() {
     super.initState();
-    _tabController =
-        TabController(length: categoriasCardapio.length, vsync: this);
-    cardapio.addListener(() {
-      setState(() {});
-    });
+    _tabController = TabController(length: 4, vsync: this); // Modificável
   }
 
   @override
@@ -59,30 +29,29 @@ class _CardapioViewState extends State<CardapioView>
         backgroundColor: AppColorPalette.redMain,
         title: TabBar(
           controller: _tabController,
-          tabs: categoriasCardapio,
-          physics: BouncingScrollPhysics(),
+          // Modificável
+          tabs: [
+            CardapiosTab(title: "Categoria",),
+            CardapiosTab(title: "Categoria",),
+            CardapiosTab(title: "Categoria",),
+            CardapiosTab(title: "Categoria",),
+          ],
+          physics: const BouncingScrollPhysics(),
           isScrollable: true,
           indicatorColor: AppColorPalette.white,
         ),
       ),
       body: TabBarView(
         controller: _tabController,
-        children: categoriasViews,
-        physics: NeverScrollableScrollPhysics(),
+        // Modificável
+        children: [
+          ConteudoCardapiosTab(),
+          ConteudoCardapiosTab(),
+          ConteudoCardapiosTab(),
+          ConteudoCardapiosTab(),
+        ],
+        physics: const NeverScrollableScrollPhysics(),
       ),
     );
-  }
-}
-
-class TabCategoria extends StatelessWidget {
-  final String title;
-  const TabCategoria({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Tab(text: title);
   }
 }
