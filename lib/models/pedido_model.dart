@@ -7,7 +7,7 @@ class Pedido {
   String estado = "";
   List<Map> dadosEssenciaisItens = [];
 
-  Pedido(this.itensPedido) {
+  Pedido({required this.itensPedido}) {
     for (var item in itensPedido) {
       precoPedido += item.calcularPrecoTotal();
       qtdeProdutosPedidos += item.qtdeSelecionadaCliente;

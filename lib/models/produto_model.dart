@@ -10,10 +10,17 @@ class Produto {
   int estoque = 0;
   int qtdeVendidos = 0;
 
-  Produto(this.nome, this.tipo, this.descricao, this.preco,
-      this.qtdeSelecionadaCliente, this.isSelecionadoCardapio, this.estoque);
+  Produto(
+      {required this.nome,
+      required this.tipo,
+      required this.descricao,
+      required this.preco,
+      required this.qtdeSelecionadaCliente,
+      required this.isSelecionadoCardapio,
+      required this.estoque});
 
-  Map<String, dynamic> get obterDadosEssenciaisProduto { // Intuito de mostrar na tela
+  Map<String, dynamic> get obterDadosEssenciaisProduto {
+    // Intuito de mostrar na tela
     return {
       "qtde": qtdeSelecionadaCliente,
       "nome": nome,
