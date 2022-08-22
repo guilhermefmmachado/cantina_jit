@@ -1,4 +1,4 @@
-class Produto {
+class ProdutoModel {
   String nome;
   String tipo;
   String descricao;
@@ -10,7 +10,7 @@ class Produto {
   int estoque = 0;
   int qtdeVendidos = 0;
 
-  Produto(
+  ProdutoModel(
       {required this.nome,
       required this.tipo,
       required this.descricao,

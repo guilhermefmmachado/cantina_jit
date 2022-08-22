@@ -1,13 +1,13 @@
 import 'produto_model.dart';
 
-class Pedido {
+class PedidoModel {
   double precoPedido = 0;
   int qtdeProdutosPedidos = 0;
-  List<Produto> itensPedido;
+  List<ProdutoModel> itensPedido;
   String estado = "";
   List<Map> dadosEssenciaisItens = [];
 
-  Pedido({required this.itensPedido}) {
+  PedidoModel({required this.itensPedido}) {
     for (var item in itensPedido) {
       precoPedido += item.calcularPrecoTotal();
       qtdeProdutosPedidos += item.qtdeSelecionadaCliente;
