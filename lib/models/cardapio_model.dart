@@ -9,6 +9,6 @@ class CardapioModel {
   }
 
   set enableFinalizarPedido(int value) {
-    accessBttnFinalizarPedido = value == 1 ? true : false;
+    accessBttnFinalizarPedido = value >= 1 ? true : false;
   }
 }

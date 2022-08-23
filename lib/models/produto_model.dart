@@ -18,6 +18,8 @@ class ProdutoModel {
       required this.qtdeSelecionadaCliente,
       required this.isSelecionadoCardapio,
       required this.estoque});
+  
+  // todo: Criar setter para estoque
 
   Map<String, dynamic> get obterDadosEssenciaisProduto {
     // Intuito de mostrar na tela
@@ -29,7 +31,7 @@ class ProdutoModel {
     };
   }
 
-  calcularPrecoTotal() {
+  double calcularPrecoTotal() {
     return preco * qtdeSelecionadaCliente;
   }
 
