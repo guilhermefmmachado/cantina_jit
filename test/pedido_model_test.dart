@@ -7,30 +7,34 @@ void main() {
       () {
     var produtosSelecionadosUsuario = [
       ProdutoModel(
-          nome: "Coxinha",
-          tipo: "Salgado",
-          descricao: "Coxinha feita com frango, requeijão e cheiro verde.",
-          preco: 2.99,
-          qtdeSelecionadaCliente: 1,
-          isSelecionadoCardapio: true,
-          estoque: 30),
+        nome: "Coxinha",
+        tipo: "Salgado",
+        descricao: "Coxinha feita com frango, requeijão e cheiro verde.",
+        preco: 2.99,
+        qtdeSelecionadaCliente: 1,
+        isSelecionadoCardapio: true,
+      ),
       ProdutoModel(
-          nome: "Coca-cola 200ml",
-          tipo: "Bebida",
-          descricao: "Coca-cola garrafinha de 200ml.",
-          preco: 1.99,
-          qtdeSelecionadaCliente: 1,
-          isSelecionadoCardapio: true,
-          estoque: 30),
+        nome: "Coca-cola 200ml",
+        tipo: "Bebida",
+        descricao: "Coca-cola garrafinha de 200ml.",
+        preco: 1.99,
+        qtdeSelecionadaCliente: 1,
+        isSelecionadoCardapio: true,
+      ),
       ProdutoModel(
-          nome: "Brigadeiro",
-          tipo: "Doce",
-          descricao: "Chocolate e granulado, a melhor das sobremesas!",
-          preco: 0.99,
-          qtdeSelecionadaCliente: 2,
-          isSelecionadoCardapio: true,
-          estoque: 30),
+        nome: "Brigadeiro",
+        tipo: "Doce",
+        descricao: "Chocolate e granulado, a melhor das sobremesas!",
+        preco: 0.99,
+        qtdeSelecionadaCliente: 2,
+        isSelecionadoCardapio: true,
+      ),
     ];
+    produtosSelecionadosUsuario[0].definirEstoque = 30;
+    produtosSelecionadosUsuario[1].definirEstoque = 30;
+    produtosSelecionadosUsuario[2].definirEstoque = 30;
+
 
     var pedido = PedidoModel(itensPedido: produtosSelecionadosUsuario);
 
@@ -57,7 +61,7 @@ void main() {
           preco: 2.99,
           qtdeSelecionadaCliente: 1,
           isSelecionadoCardapio: true,
-          estoque: 30),
+          ),
       ProdutoModel(
           nome: "Coca-cola 200ml",
           tipo: "Bebida",
@@ -65,7 +69,7 @@ void main() {
           preco: 1.99,
           qtdeSelecionadaCliente: 1,
           isSelecionadoCardapio: true,
-          estoque: 30),
+          ),
       ProdutoModel(
           nome: "Brigadeiro",
           tipo: "Doce",
@@ -73,8 +77,11 @@ void main() {
           preco: 0.99,
           qtdeSelecionadaCliente: 2,
           isSelecionadoCardapio: true,
-          estoque: 30),
+          ),
     ];
+    produtosSelecionadosUsuario[0].definirEstoque = 30;
+    produtosSelecionadosUsuario[1].definirEstoque = 30;
+    produtosSelecionadosUsuario[2].definirEstoque = 30;
 
     var pedido = PedidoModel(itensPedido: produtosSelecionadosUsuario);
 
@@ -96,7 +103,7 @@ void main() {
           preco: 2.99,
           qtdeSelecionadaCliente: 1,
           isSelecionadoCardapio: true,
-          estoque: 30),
+          ),
       ProdutoModel(
           nome: "Coca-cola 200ml",
           tipo: "Bebida",
@@ -104,7 +111,7 @@ void main() {
           preco: 1.99,
           qtdeSelecionadaCliente: 1,
           isSelecionadoCardapio: true,
-          estoque: 30),
+          ),
       ProdutoModel(
           nome: "Brigadeiro",
           tipo: "Doce",
@@ -112,8 +119,11 @@ void main() {
           preco: 0.99,
           qtdeSelecionadaCliente: 2,
           isSelecionadoCardapio: true,
-          estoque: 30),
+          ),
     ];
+    produtosSelecionadosUsuario[0].definirEstoque = 30;
+    produtosSelecionadosUsuario[1].definirEstoque = 30;
+    produtosSelecionadosUsuario[2].definirEstoque = 30;
 
     var pedido = PedidoModel(itensPedido: produtosSelecionadosUsuario);
 

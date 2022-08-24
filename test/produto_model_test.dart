@@ -14,13 +14,15 @@ void main() {
       'Dado o seguinte produto, deve-se retornar os seguintes dados essenciais',
       () {
     final hamburguer = ProdutoModel(
-        nome: "Hambúrguer",
-        tipo: "Sanduíches",
-        descricao: "Melhor que os hambúrgueres do MC!",
-        preco: 6.99,
-        qtdeSelecionadaCliente: 0,
-        isSelecionadoCardapio: false,
-        estoque: 30);
+      nome: "Hambúrguer",
+      tipo: "Sanduíches",
+      descricao: "Melhor que os hambúrgueres do MC!",
+      preco: 6.99,
+      qtdeSelecionadaCliente: 0,
+      isSelecionadoCardapio: false,
+    );
+
+    hamburguer.definirEstoque = 30;
 
     expect(hamburguer.obterDadosEssenciaisProduto,
         {"qtde": 0, "nome": "Hambúrguer", "preco-uni": 6.99, "preco-total": 0});
@@ -30,13 +32,15 @@ void main() {
       'Foi pedido uma unidade desse produto. Deve-se portanto retornar o preço total igual ao preço de uma unidade.',
       () {
     final hamburguer = ProdutoModel(
-        nome: "Hambúrguer",
-        tipo: "Sanduíches",
-        descricao: "Melhor que os hambúrgueres do MC!",
-        preco: 6.99,
-        qtdeSelecionadaCliente: 0,
-        isSelecionadoCardapio: false,
-        estoque: 30);
+      nome: "Hambúrguer",
+      tipo: "Sanduíches",
+      descricao: "Melhor que os hambúrgueres do MC!",
+      preco: 6.99,
+      qtdeSelecionadaCliente: 0,
+      isSelecionadoCardapio: false,
+    );
+
+    hamburguer.definirEstoque = 30;
 
     hamburguer.addQtdeSelecionadoCliente();
 
@@ -49,40 +53,38 @@ void main() {
     });
   });
 
-  test(
-      'O produto foi selecionado e depois foi removido',
-      () {
+  test('O produto foi selecionado e depois foi removido', () {
     final hamburguer = ProdutoModel(
-        nome: "Hambúrguer",
-        tipo: "Sanduíches",
-        descricao: "Melhor que os hambúrgueres do MC!",
-        preco: 6.99,
-        qtdeSelecionadaCliente: 0,
-        isSelecionadoCardapio: false,
-        estoque: 30);
+      nome: "Hambúrguer",
+      tipo: "Sanduíches",
+      descricao: "Melhor que os hambúrgueres do MC!",
+      preco: 6.99,
+      qtdeSelecionadaCliente: 0,
+      isSelecionadoCardapio: false,
+    );
+
+    hamburguer.definirEstoque = 30;
 
     hamburguer.addQtdeSelecionadoCliente();
     hamburguer.remQtdeSelecionadoCliente();
 
-    expect(hamburguer.obterDadosEssenciaisProduto, {
-      "qtde": 0,
-      "nome": "Hambúrguer",
-      "preco-uni": 6.99,
-      "preco-total": 0
-    });
+    expect(hamburguer.obterDadosEssenciaisProduto,
+        {"qtde": 0, "nome": "Hambúrguer", "preco-uni": 6.99, "preco-total": 0});
   });
 
   test(
       'Foi pedido uma unidade desse produto. Deve-se portanto retornar o preço total igual ao preço de uma unidade.',
       () {
     final hamburguer = ProdutoModel(
-        nome: "Hambúrguer",
-        tipo: "Sanduíches",
-        descricao: "Melhor que os hambúrgueres do MC!",
-        preco: 6.99,
-        qtdeSelecionadaCliente: 0,
-        isSelecionadoCardapio: false,
-        estoque: 30);
+      nome: "Hambúrguer",
+      tipo: "Sanduíches",
+      descricao: "Melhor que os hambúrgueres do MC!",
+      preco: 6.99,
+      qtdeSelecionadaCliente: 0,
+      isSelecionadoCardapio: false,
+    );
+
+    hamburguer.definirEstoque = 30;
 
     hamburguer.addQtdeSelecionadoCliente();
 

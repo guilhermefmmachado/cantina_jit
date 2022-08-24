@@ -10,15 +10,15 @@ class ProdutoModel {
   int estoque = 0;
   int qtdeVendidos = 0;
 
-  ProdutoModel(
-      {required this.nome,
-      required this.tipo,
-      required this.descricao,
-      required this.preco,
-      required this.qtdeSelecionadaCliente,
-      required this.isSelecionadoCardapio,
-      required this.estoque});
-  
+  ProdutoModel({
+    required this.nome,
+    required this.tipo,
+    required this.descricao,
+    required this.preco,
+    required this.qtdeSelecionadaCliente,
+    required this.isSelecionadoCardapio,
+  });
+
   // todo: Criar setter para estoque
 
   Map<String, dynamic> get obterDadosEssenciaisProduto {
@@ -41,6 +41,10 @@ class ProdutoModel {
 
   remQtdeSelecionadoCliente() {
     qtdeSelecionadaCliente -= 1;
+  }
+
+  set definirEstoque(int qtdeProdutosDisponiveis) {
+    estoque = qtdeProdutosDisponiveis;
   }
 
   set atualizarQtdeVendidos(int numVendidos) {

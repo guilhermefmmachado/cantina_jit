@@ -14,8 +14,6 @@ class _CardapioViewState extends State<CardapioView>
     with TickerProviderStateMixin {
   late TabController _tabController;
 
-  List<Widget> tabsCardapio = [];
-
   @override
   void initState() {
     super.initState();
@@ -31,10 +29,18 @@ class _CardapioViewState extends State<CardapioView>
           controller: _tabController,
           // Modificável
           tabs: [
-            CardapiosTab(title: "Categoria",),
-            CardapiosTab(title: "Categoria",),
-            CardapiosTab(title: "Categoria",),
-            CardapiosTab(title: "Categoria",),
+            CardapiosTab(
+              title: "Categoria",
+            ),
+            CardapiosTab(
+              title: "Categoria",
+            ),
+            CardapiosTab(
+              title: "Categoria",
+            ),
+            CardapiosTab(
+              title: "Categoria",
+            ),
           ],
           physics: const BouncingScrollPhysics(),
           isScrollable: true,
