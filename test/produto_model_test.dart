@@ -96,4 +96,21 @@ void main() {
       "preco-total": 6.99
     });
   });
+
+  test('Realizado a compra de um produto, deve-se atualizar o estoque.', () {
+    final hamburguer = ProdutoModel(
+      nome: "Hambúrguer",
+      tipo: "Sanduíches",
+      descricao: "Melhor que os hambúrgueres do MC!",
+      preco: 6.99,
+      qtdeSelecionadaCliente: 0,
+      isSelecionadoCardapio: false,
+    );
+
+    hamburguer.definirEstoque = 30;
+    hamburguer.addQtdeSelecionadoCliente();
+    hamburguer.atualizarQtdeVendidos = hamburguer.qtdeSelecionadaCliente;
+
+    expect(hamburguer.estoqueAtual, 29);
+  });
 }

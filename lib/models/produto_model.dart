@@ -52,6 +52,10 @@ class ProdutoModel {
     _atualizarEstoque();
   }
 
+  get estoqueAtual {
+    return estoque;
+  }
+
   _atualizarEstoque() {
     estoque = estoque - qtdeVendidos;
     _tornarProdutoIndisponivel();
