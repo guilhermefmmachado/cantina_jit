@@ -1,7 +1,8 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
-import 'package:cantina_jit/navigations/tabbar.dart';
-import 'package:cantina_jit/views/cardapio.dart';
 import 'package:cantina_jit/views/editar_cardapio.dart';
+import 'package:cantina_jit/views/editar_cardapio_views/adicionar_produto.dart';
+import 'package:cantina_jit/views/editar_cardapio_views/editar_produto.dart';
+import 'package:cantina_jit/views/editar_cardapio_views/remover_produto.dart';
 import 'package:flutter/material.dart';
 
 class HomeColoredButton extends StatefulWidget {
@@ -14,7 +15,7 @@ class HomeColoredButton extends StatefulWidget {
     Key? key,
     required this.text,
     required this.actorLevel,
-    required this.cor, 
+    required this.cor,
     this.navigation,
   }) : super(key: key);
 
@@ -41,6 +42,24 @@ class _HomeColoredButtonState extends State<HomeColoredButton> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => const EditarCardapioView()));
+            }
+            if (widget.navigation == "adicionar-produto") {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AdicionarProdutoView()));
+            }
+            if (widget.navigation == "editar-produto") {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EditarProdutoView()));
+            }
+            if (widget.navigation == "remover-produto") {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const RemoverProdutoView()));
             }
             /*
             Não implementado
