@@ -10,10 +10,13 @@ class ConteudoCardapiosTab extends StatefulWidget {
 }
 
 class _ConteudoCardapiosTabState extends State<ConteudoCardapiosTab> {
+  // Modificável - Teste do itembuilder / itemcount
+  final myProducts = List<String>.generate(10, (i) => 'Product $i');
+
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Olá, Mundo"),
+    return Center(
+      child: Text("Teste"),
     );
   }
 }

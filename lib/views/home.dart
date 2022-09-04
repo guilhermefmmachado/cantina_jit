@@ -1,5 +1,7 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
+import 'package:cantina_jit/views/editar_cardapio.dart';
 import 'package:cantina_jit/widgets/home_bttn_receber_pedido.dart';
+import 'package:cantina_jit/widgets/home_colored_button.dart';
 import 'package:cantina_jit/widgets/home_header.dart';
 import 'package:cantina_jit/widgets/home_nav_button.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +34,12 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-            HomeNavButton(imgPath: "assets/system_images/cardapio-button-wallpaper-02.jpg", text: "Cardápio", actorLevel: 1,),
+            HomeColoredButton(
+              cor: AppColorPalette.redSec,
+              text: "Faça seu login aqui",
+              actorLevel: 0,
+              navigation: 0,
+            ),
             Container(
               width: MediaQuery.of(context).size.width - 32,
               height: 240,
@@ -126,9 +133,12 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             // NOVAS ROWS E GESTURE DETECTORS
-            HomeNavButton(imgPath: "assets/system_images/cardapio-button-wallpaper-02.jpg", text: "Cardápio", actorLevel: 1,),
-            HomeNavButton(imgPath: "assets/system_images/home-wallpaper.jpg", text: "Programando vendo RLCS ^-^", actorLevel: 1,),
-            HomeNavButton(imgPath: "assets/system_images/home-wallpaper.jpg", text: "LAIVE SHARE", actorLevel: 3,),
+            HomeNavButton(
+              imgPath: "assets/system_images/cardapio-button-wallpaper-02.jpg",
+              text: "Editar Cardápio",
+              actorLevel: 2,
+              navigation: "editar-cardapio",
+            )
           ],
         ),
       ),

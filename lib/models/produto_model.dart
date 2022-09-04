@@ -19,8 +19,6 @@ class ProdutoModel {
     required this.isSelecionadoCardapio,
   });
 
-  // todo: Criar setter para estoque
-
   Map<String, dynamic> get obterDadosEssenciaisProduto {
     // Intuito de mostrar na tela
     return {

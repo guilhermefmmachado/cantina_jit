@@ -4,25 +4,25 @@ import 'package:cantina_jit/views/cardapio.dart';
 import 'package:cantina_jit/views/editar_cardapio.dart';
 import 'package:flutter/material.dart';
 
-class HomeNavButton extends StatefulWidget {
-  final String imgPath;
+class HomeColoredButton extends StatefulWidget {
   final String text;
+  final Color cor;
   final int actorLevel;
   final navigation;
 
-  const HomeNavButton({
+  const HomeColoredButton({
     Key? key,
-    required this.imgPath,
     required this.text,
     required this.actorLevel,
+    required this.cor, 
     this.navigation,
   }) : super(key: key);
 
   @override
-  State<HomeNavButton> createState() => _HomeNavButtonState();
+  State<HomeColoredButton> createState() => _HomeColoredButtonState();
 }
 
-class _HomeNavButtonState extends State<HomeNavButton> {
+class _HomeColoredButtonState extends State<HomeColoredButton> {
   final List<String> actors = [
     "Visitante",
     "Cliente",
@@ -36,13 +36,21 @@ class _HomeNavButtonState extends State<HomeNavButton> {
       children: [
         GestureDetector(
           onTap: () {
-            if (widget.navigation == 1) {
+            if (widget.navigation == "editar-cardapio") {
               Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const EditarCardapioView()),
-              );
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EditarCardapioView()));
             }
+            /*
+            Não implementado
+            if (widget.navigation == "tela-login") {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EditarCardapioView()));
+            }
+            */
           },
           child: Expanded(
             child: Container(
@@ -50,15 +58,9 @@ class _HomeNavButtonState extends State<HomeNavButton> {
               height: 80,
               margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
+                color: widget.cor,
                 border: Border.all(color: AppColorPalette.black, width: 2),
                 borderRadius: BorderRadius.circular(8),
-                image: DecorationImage(
-                  image: AssetImage(widget.imgPath),
-                  fit: BoxFit.cover,
-                  filterQuality: FilterQuality.low,
-                  colorFilter: ColorFilter.mode(
-                      AppColorPalette.black.withOpacity(0.4), BlendMode.darken),
-                ),
               ),
               child: Center(
                 child: Text(
