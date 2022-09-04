@@ -36,7 +36,7 @@ class _HomeNavButtonState extends State<HomeNavButton> {
       children: [
         GestureDetector(
           onTap: () {
-            if (widget.navigation == 1) {
+            if (widget.navigation == "editar-cardapio") {
               Navigator.push(
                 context,
                 MaterialPageRoute(
