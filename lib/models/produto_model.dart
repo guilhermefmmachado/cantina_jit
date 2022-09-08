@@ -1,7 +1,7 @@
 class ProdutoModel {
   String nome;
   String tipo;
-  String descricao;
+  String? descricao = "";
   double preco;
   int qtdeSelecionadaCliente;
 
@@ -12,8 +12,8 @@ class ProdutoModel {
 
   ProdutoModel({
     required this.nome,
+    this.descricao,
     required this.tipo,
-    required this.descricao,
     required this.preco,
     required this.qtdeSelecionadaCliente,
     required this.isSelecionadoCardapio,
