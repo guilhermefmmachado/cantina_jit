@@ -117,6 +117,7 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             print("Funciona...");
+                            // * É aqui onde a programação para alterar o BD acontece
                           }
                         },
                         child: const Text("Adicionar"),
