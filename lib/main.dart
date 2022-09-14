@@ -1,3 +1,4 @@
+import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:flutter/material.dart';
 import 'package:cantina_jit/navigations/tabbar.dart';
 import 'package:flutter/services.dart';
@@ -18,6 +19,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
       home: Tabbar(),
     );
   }

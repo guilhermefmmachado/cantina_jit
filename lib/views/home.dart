@@ -38,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
               cor: AppColorPalette.redSec,
               text: "Faça seu login aqui",
               actorLevel: 0,
-              navigation: 0,
+              navigation: "tela-login",
             ),
             Container(
               width: MediaQuery.of(context).size.width - 32,

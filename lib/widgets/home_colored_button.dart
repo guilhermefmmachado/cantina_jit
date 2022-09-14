@@ -3,6 +3,7 @@ import 'package:cantina_jit/views/editar_cardapio.dart';
 import 'package:cantina_jit/views/editar_cardapio_views/adicionar_produto.dart';
 import 'package:cantina_jit/views/editar_cardapio_views/editar_produto.dart';
 import 'package:cantina_jit/views/editar_cardapio_views/remover_produto.dart';
+import 'package:cantina_jit/views/login.dart';
 import 'package:flutter/material.dart';
 
 class HomeColoredButton extends StatefulWidget {
@@ -61,15 +62,12 @@ class _HomeColoredButtonState extends State<HomeColoredButton> {
                   MaterialPageRoute(
                       builder: (context) => const RemoverProdutoView()));
             }
-            /*
-            Não implementado
             if (widget.navigation == "tela-login") {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const EditarCardapioView()));
+                      builder: (context) => const LoginView()));
             }
-            */
           },
           child: Expanded(
             child: Container(
