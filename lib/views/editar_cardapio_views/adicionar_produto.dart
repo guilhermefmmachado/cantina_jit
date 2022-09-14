@@ -96,11 +96,11 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                     decoration: const InputDecoration(
                       hintText: "Estoque",
                       focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: AppColorPalette.greenMain,
-                        width: 2,
+                        borderSide: BorderSide(
+                          color: AppColorPalette.greenMain,
+                          width: 2,
+                        ),
                       ),
-                    ),
                     ),
                     validator: (String? value) {
                       if (value == null ||
@@ -114,16 +114,17 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
                     child: ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            print("Funciona...");
-                            // * É aqui onde a programação para alterar o BD acontece
-                          }
-                        },
-                        child: const Text("Adicionar"),
-                        style: ElevatedButton.styleFrom(
-                          primary: AppColorPalette.redMain,
-                        )),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          print("Funciona...");
+                          // * É aqui onde a programação para alterar o BD acontece
+                        }
+                      },
+                      child: const Text("Adicionar"),
+                      style: ElevatedButton.styleFrom(
+                        primary: AppColorPalette.redMain,
+                      ),
+                    ),
                   ),
                 ),
               ],
