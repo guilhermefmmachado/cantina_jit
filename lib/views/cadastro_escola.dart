@@ -1,16 +1,16 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:flutter/material.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class CadastroEscolaView extends StatefulWidget {
+  const CadastroEscolaView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<CadastroEscolaView> createState() => _CadastroEscolaViewState();
 }
 
-// TODO: Estilizar os campos.
-// ! Atenção aos retornos NULL
-class _LoginViewState extends State<LoginView> {
+// ! NA MONOGRAFIA, MUDAR O PROCESSO DE CADASTRO DE ESCOLA PARA INSCREVER O GERENTE
+// TODO: Inserir segundo campo de senha para confirmação.
+class _CadastroEscolaViewState extends State<CadastroEscolaView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isPasswordFieldObscure = true;
 
@@ -31,8 +31,26 @@ class _LoginViewState extends State<LoginView> {
               children: <Widget>[
                 TextFormField(
                   decoration: const InputDecoration(
-                    hintText: "usuario@example.com",
-                    labelText: "E-mail do usuário",
+                    hintText: "E. M. Exemplo Ilustrativo",
+                    labelText: "Nome da escola",
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: AppColorPalette.greenMain,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Por favor, informe o nome da escola.";
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: "escola@example.com",
+                    labelText: "E-mail da escola",
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: AppColorPalette.greenMain,
@@ -50,7 +68,52 @@ class _LoginViewState extends State<LoginView> {
                 TextFormField(
                   obscureText: _isPasswordFieldObscure,
                   decoration: InputDecoration(
-                    hintText: "Senha",
+                    hintText: "Senha da escola",
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: AppColorPalette.greenMain,
+                        width: 2,
+                      ),
+                    ),
+                    suffixIcon: IconButton(
+                        icon: Icon(_isPasswordFieldObscure
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            _isPasswordFieldObscure = !_isPasswordFieldObscure;
+                          });
+                        }),
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Por favor, informe sua senha.";
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: "gerente@example.com",
+                    labelText: "E-mail do gerente ou coordenador da escola.",
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: AppColorPalette.greenMain,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Por favor, informe o e-mail semelhante ao exemplo.";
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  obscureText: _isPasswordFieldObscure,
+                  decoration: InputDecoration(
+                    hintText: "Senha do gerente da escola.",
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: AppColorPalette.greenMain,
