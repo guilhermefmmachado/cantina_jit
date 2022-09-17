@@ -1,7 +1,5 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class CadastroEscolaView extends StatefulWidget {
   const CadastroEscolaView({Key? key}) : super(key: key);
