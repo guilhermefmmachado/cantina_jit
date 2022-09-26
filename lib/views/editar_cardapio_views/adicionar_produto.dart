@@ -1,5 +1,6 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class AdicionarProdutoView extends StatefulWidget {
   const AdicionarProdutoView({Key? key}) : super(key: key);
@@ -117,7 +118,7 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           print("Funciona...");
-                          // * É aqui onde a programação para alterar o BD acontece
+                          
                         }
                       },
                       child: const Text("Adicionar"),

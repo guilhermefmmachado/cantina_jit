@@ -1,7 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, unused_import
-
-import 'dart:ffi';
-
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:flutter/material.dart';
 
