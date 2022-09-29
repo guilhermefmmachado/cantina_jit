@@ -28,7 +28,7 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
   late String msg;
 
   String phpUrl =
-      "http://177.71.69.206/projetos_flutter/cantina_jit_backend/index.php";
+      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";
 
   @override
   void initState() {
