@@ -28,7 +28,7 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
   late String msg;
 
   String phpUrl =
-      "http://179.183.164.113/projetos_flutter/cantina_jit_backend/index.php";
+      "http://177.71.69.206/projetos_flutter/cantina_jit_backend/index.php";
 
   @override
   void initState() {
@@ -53,10 +53,37 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
     if (response.statusCode == 200) {
       print(response.body);
       // ! Rever o que "data" fala
-      var data = json.decode(response.body);
+      var data =
+          json.decode(response.body); // Decodificando JSON para um array.
       if (data["erro"]) {
         // TODO: Completar o código daqui
+        setState(() {
+          enviando = false;
+          erro = true;
+          msg = data["msg"];
+        });
+      } else {
+        // Se a inserção ao BD for bem sucedida, esvazie os campos.
+        nomeProdutoCtl.text = "";
+        descProdutoCtl.text = "";
+        tipoProdutoCtl.text = "";
+        precoProdutoCtl.text = "";
+        estoqueProdutoCtl.text = "";
+
+        setState(() {
+          enviando = false;
+          sucesso = true;
+          // Mensagem de sucesso e atualizar UI com setState
+        });
       }
+    } else {
+      // Erro de statusCode
+      setState(() {
+        erro = true;
+        msg = "Erro no envio do conteúdo. ${response.statusCode}";
+        enviando = false;
+        // Dispara erro e atualiza com setState
+      });
     }
   }
 
@@ -64,7 +91,7 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Adicionar Produto"),
+        title: const Text("Adicionar Produto"),
         backgroundColor: AppColorPalette.redMain,
       ),
       body: SingleChildScrollView(
@@ -168,11 +195,16 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          print("Funciona...");
+                          // currentState! -> a exclamação indica que esse valor JAMAIS será nulo
+                          // print("Funciona...");
                           // * É aqui onde a programação para alterar o BD acontece
+                          setState(() {
+                            enviando = true;
+                          });
+                          addProduto();
                         }
                       },
-                      child: const Text("Adicionar"),
+                      child: Text(enviando ? "Adicionando..." : "Adicionar"),
                       style: ElevatedButton.styleFrom(
                         primary: AppColorPalette.redMain,
                       ),
