@@ -28,11 +28,10 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
   late String msg;
 
   String phpUrl =
-      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";
+      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/controllers/add_produto_ctl.php";
 
   @override
   void initState() {
-    // TODO: implement initState
     erro = false;
     enviando = false;
     sucesso = false;
@@ -52,11 +51,9 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
 
     if (response.statusCode == 200) {
       print(response.body);
-      // ! Rever o que "data" fala
       var data =
           json.decode(response.body); // Decodificando JSON para um array.
       if (data["erro"]) {
-        // TODO: Completar o código daqui
         setState(() {
           enviando = false;
           erro = true;
@@ -211,6 +208,9 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                     ),
                   ),
                 ),
+                Center(
+                  child: Text(sucesso ? "Produto adicionado!" : msg),
+                )
               ],
             ),
           ),
