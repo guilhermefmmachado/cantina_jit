@@ -48,33 +48,40 @@ class _CardapioViewState extends State<CardapioView> {
       body: Stack(
         children: [
           ListView.builder(
-          itemCount: listaProdutos.isNotEmpty ? listaProdutos.length : 0,
-          itemBuilder: (BuildContext context, int index) {
-            return CheckboxListTile(
-              activeColor: _color,
-              title: Text(listaProdutos[index].nome),
-              value: listaProdutos[index].isSelecionadoCardapio,
-              onChanged: (bool? value) {
-                setState(() {
-                  listaProdutos[index].selecionarProduto = value!;
-                  listaProdutos[index].addQtdeSelecionadoCliente();
-                  listaProdutos[index].remQtdeSelecionadoCliente();
-                });
-                print(
-                    "${listaProdutos[index].nome}, ${listaProdutos[index].isSelecionadoCardapio}");
-              },
-            );
-          },
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          child: Container(
-            color: AppColorPalette.whiteAux,
-            width: MediaQuery.of(context).size.width,
-            height: 60,
+            itemCount: listaProdutos.isNotEmpty ? listaProdutos.length : 0,
+            itemBuilder: (BuildContext context, int index) {
+              return CheckboxListTile(
+                activeColor: _color,
+                title: Text(listaProdutos[index].nome),
+                value: listaProdutos[index].isSelecionadoCardapio,
+                onChanged: (bool? value) {
+                  setState(() {
+                    listaProdutos[index].selecionarProduto = value!;
+                    listaProdutos[index].addQtdeSelecionadoCliente();
+                    listaProdutos[index].remQtdeSelecionadoCliente();
+                  });
+                  print(
+                      "${listaProdutos[index].nome}, ${listaProdutos[index].isSelecionadoCardapio}");
+                },
+              );
+            },
           ),
-        ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            child: Container(
+              color: AppColorPalette.whiteAux,
+              width: MediaQuery.of(context).size.width,
+              height: 60,
+              child: ElevatedButton(
+                onPressed: onPressed,
+                child: Text("Realizar pedido"),
+                style: ButtonStyle(
+                  backgroundColor: AppColorPalette.greenMain,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
