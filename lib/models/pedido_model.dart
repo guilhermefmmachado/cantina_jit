@@ -1,9 +1,9 @@
-import 'produto_model.dart';
+import 'package:cantina_jit/models/item_cardapio.dart';
 
 class PedidoModel {
   double precoPedido = 0;
   int qtdeProdutosPedidos = 0;
-  List<ProdutoModel> itensPedido;
+  List<ItemCardapio> itensPedido;
   String estadoAtual = ""; // A ser desenvolvido
   List<Map<String, String>> estados = [
     {"estado": "Pedido ainda não realizado", "desc": "Você ainda não fez seu pedido."},
