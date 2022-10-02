@@ -73,13 +73,15 @@ class _CardapioViewState extends State<CardapioView> {
               color: AppColorPalette.whiteAux,
               width: MediaQuery.of(context).size.width,
               height: 60,
+              padding: const EdgeInsets.all(10),
               child: ElevatedButton(
-                onPressed: onPressed,
-                child: Text("Realizar pedido"),
-                style: ButtonStyle(
-                  backgroundColor: AppColorPalette.greenMain,
-                ),
-              ),
+                  onPressed: () {
+                    print("Funciona...");
+                  },
+                  child: Text("Realizar pedido"),
+                  style: ElevatedButton.styleFrom(
+                    primary: AppColorPalette.greenMain,
+                  )),
             ),
           ),
         ],
