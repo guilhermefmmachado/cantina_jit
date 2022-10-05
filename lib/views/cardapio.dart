@@ -15,8 +15,8 @@ class CardapioView extends StatefulWidget {
 }
 
 class _CardapioViewState extends State<CardapioView> {
-  String phpUrl = "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";
-  /* String phpUrl = "http://192.168.102.66/projetos_flutter/cantina_jit_backend/index.php"; */
+  /*String phpUrl = "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";*/
+  String phpUrl = "http://192.168.137.186/projetos_flutter/cantina_jit_backend/index.php";
   late List dadosCardapio;
   List<ItemCardapio> listaProdutos = [];
 
