@@ -15,11 +15,14 @@ class CardapioView extends StatefulWidget {
 }
 
 class _CardapioViewState extends State<CardapioView> {
-  String phpUrl =
-      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";
+  String phpUrl = "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";
+  /* String phpUrl = "http://192.168.102.66/projetos_flutter/cantina_jit_backend/index.php"; */
   late List dadosCardapio;
   List<ItemCardapio> listaProdutos = [];
-  Color? _color = AppColorPalette.redMain;
+
+  Color? _ckbxColor = AppColorPalette.redMain;
+  bool _isBtnFinalizarEnabled = false;
+  Color? _btnColor = AppColorPalette.greenMain;
 
   Future listarProdutos() async {
     http.Response response = await http.get(Uri.parse(phpUrl));
@@ -47,24 +50,27 @@ class _CardapioViewState extends State<CardapioView> {
     return Scaffold(
       body: Stack(
         children: [
-          ListView.builder(
-            itemCount: listaProdutos.isNotEmpty ? listaProdutos.length : 0,
-            itemBuilder: (BuildContext context, int index) {
-              return CheckboxListTile(
-                activeColor: _color,
-                title: Text(listaProdutos[index].nome),
-                value: listaProdutos[index].isSelecionadoCardapio,
-                onChanged: (bool? value) {
-                  setState(() {
-                    listaProdutos[index].selecionarProduto = value!;
-                    listaProdutos[index].addQtdeSelecionadoCliente();
-                    listaProdutos[index].remQtdeSelecionadoCliente();
-                  });
-                  print(
-                      "${listaProdutos[index].nome}, ${listaProdutos[index].isSelecionadoCardapio}");
-                },
-              );
-            },
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 60),
+            child: ListView.builder(
+              itemCount: listaProdutos.isNotEmpty ? listaProdutos.length : 0,
+              itemBuilder: (BuildContext context, int index) {
+                return CheckboxListTile(
+                  activeColor: _ckbxColor,
+                  title: Text(listaProdutos[index].nome),
+                  value: listaProdutos[index].isSelecionadoCardapio,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      listaProdutos[index].selecionarProduto = value!;
+                      listaProdutos[index].addQtdeSelecionadoCliente();
+                      listaProdutos[index].remQtdeSelecionadoCliente();
+                    });
+                    print(
+                        "${listaProdutos[index].nome}, ${listaProdutos[index].isSelecionadoCardapio}");
+                  },
+                );
+              },
+            ),
           ),
           Positioned(
             bottom: 0,
@@ -75,13 +81,14 @@ class _CardapioViewState extends State<CardapioView> {
               height: 60,
               padding: const EdgeInsets.all(10),
               child: ElevatedButton(
-                  onPressed: () {
-                    print("Funciona...");
-                  },
-                  child: Text("Realizar pedido"),
-                  style: ElevatedButton.styleFrom(
-                    primary: AppColorPalette.greenMain,
-                  )),
+                onPressed: () {
+                  print("Funciona...");
+                },
+                child: Text("Realizar pedido"),
+                style: ElevatedButton.styleFrom(
+                  primary: AppColorPalette.greenMain,
+                ),
+              ),
             ),
           ),
         ],
