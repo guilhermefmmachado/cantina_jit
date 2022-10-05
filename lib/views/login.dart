@@ -1,4 +1,5 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
+import 'package:cantina_jit/views/cadastro/is_atores.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -25,11 +26,10 @@ class _LoginViewState extends State<LoginView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
-                SizedBox(height: 8,),
-                Text(
-                  "Bem-vindo à Cantina JIT",
-                  style: TextStyle(fontSize: 24)
+                SizedBox(
+                  height: 8,
                 ),
+                Text("Bem-vindo à Cantina JIT", style: TextStyle(fontSize: 24)),
                 Text(
                   "Faça seu login e aproveite!",
                   style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
@@ -124,7 +124,11 @@ class _LoginViewState extends State<LoginView> {
                   const Text("Não tem uma conta? Crie sua conta "),
                   GestureDetector(
                     onTap: () {
-                      print("Foi...");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const IsClienteFuncionarioGerenteView()),
+                      );
                     },
                     child: const Text(
                       "aqui",
