@@ -1,4 +1,6 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
+import 'package:cantina_jit/views/cadastro/cadastro_escola.dart';
+import 'package:cantina_jit/views/cadastro/cadastro_estudante_funcionario.dart';
 import 'package:flutter/material.dart';
 
 class IsClienteFuncionarioGerenteView extends StatelessWidget {
@@ -24,7 +26,11 @@ class IsClienteFuncionarioGerenteView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
             child: ElevatedButton(
               onPressed: () {
-                print("Teste...");
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CadastroClienteView()),
+              );
               },
               style: ElevatedButton.styleFrom(
                 primary: AppColorPalette.redMain,
@@ -62,7 +68,11 @@ class IsClienteFuncionarioGerenteView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
             child: ElevatedButton(
               onPressed: () {
-                print("Teste...");
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CadastroEscolaView()),
+              );
               },
               style: ElevatedButton.styleFrom(
                 primary: AppColorPalette.redMain,
