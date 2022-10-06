@@ -14,6 +14,7 @@ class CardapioView extends StatefulWidget {
   State<CardapioView> createState() => _CardapioViewState();
 }
 
+// TODO: IMPLEMENTAR ÚLTIMAS MUDANÇAS DO BANCO DE DADOS E BACKEND
 class _CardapioViewState extends State<CardapioView> {
   /*String phpUrl = "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";*/
   String phpUrl = "http://192.168.137.186/projetos_flutter/cantina_jit_backend/index.php";
