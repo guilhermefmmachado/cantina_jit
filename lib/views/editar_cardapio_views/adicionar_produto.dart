@@ -18,6 +18,7 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
   TextEditingController descProdutoCtl = TextEditingController();
   TextEditingController tipoProdutoCtl = TextEditingController();
   TextEditingController precoProdutoCtl = TextEditingController();
+  TextEditingController limQtdePorSelecaoCtl = TextEditingController();
   TextEditingController estoqueProdutoCtl = TextEditingController();
 
   //text controller for TextField
@@ -41,11 +42,12 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
 
   Future<void> addProduto() async {
     var response = await http.post(Uri.parse(phpUrl), body: {
-      // $novoProduto = new Produto($_POST["nome"], $_POST["desc"], $_POST["tipo"], $_POST["preco"], $_POST["estoque"]);
+      // $novoProduto = new Produto($_POST["nome"], $_POST["desc"], $_POST["tipo"], $_POST["preco"], $_POST["limqtdeporselecao"] $_POST["estoque"]);
       "nome": nomeProdutoCtl.text,
       "desc": descProdutoCtl.text,
       "tipo": tipoProdutoCtl.text,
       "preco": precoProdutoCtl.text,
+      "limqtdeporselecao": limQtdePorSelecaoCtl.text,
       "estoque": estoqueProdutoCtl.text,
     });
 
@@ -65,6 +67,7 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
         descProdutoCtl.text = "";
         tipoProdutoCtl.text = "";
         precoProdutoCtl.text = "";
+        limQtdePorSelecaoCtl.text = "";
         estoqueProdutoCtl.text = "";
 
         setState(() {
@@ -102,7 +105,8 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                 TextFormField(
                   controller: nomeProdutoCtl,
                   decoration: const InputDecoration(
-                    hintText: "Nome do produto",
+                    hintText: "Hambúrguer",
+                    labelText: "Nome do produto",
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: AppColorPalette.greenMain,
@@ -121,6 +125,7 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                   controller: descProdutoCtl,
                   decoration: const InputDecoration(
                     hintText: "Descrição do produto (opcional)",
+                    labelText: "Descrição do produto (opcional)",
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: AppColorPalette.greenMain,
@@ -132,7 +137,8 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                 TextFormField(
                   controller: tipoProdutoCtl,
                   decoration: const InputDecoration(
-                    hintText: "Tipo ou categoria do produto",
+                    hintText: "Sanduíches",
+                    labelText: "Tipo ou categoria do produto",
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: AppColorPalette.greenMain,
@@ -150,7 +156,8 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                 TextFormField(
                   controller: precoProdutoCtl,
                   decoration: const InputDecoration(
-                    hintText: "Preço do produto (R\$)",
+                    hintText: "4.00",
+                    labelText: "Preço do produto (R\$)",
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: AppColorPalette.greenMain,
@@ -168,9 +175,31 @@ class _AdicionarProdutoViewState extends State<AdicionarProdutoView> {
                   },
                 ),
                 TextFormField(
+                    controller: limQtdePorSelecaoCtl,
+                    decoration: const InputDecoration(
+                      hintText: "Máximo de um mesmo item incluso no pedido.",
+                      labelText: "Limite de quantidade para cada usuário",
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: AppColorPalette.greenMain,
+                          width: 2,
+                        ),
+                      ),
+                    ),
+                    validator: (String? value) {
+                      if (value == null ||
+                          value.isEmpty ||
+                          int.tryParse(value) == null ||
+                          int.tryParse(value) == 0) {
+                        return "Por favor, informe um valor numérico. Ex.: 2";
+                      }
+                      return null;
+                    }),
+                TextFormField(
                     controller: estoqueProdutoCtl,
                     decoration: const InputDecoration(
-                      hintText: "Estoque",
+                      hintText: "30",
+                      labelText: "Estoque",
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: AppColorPalette.greenMain,

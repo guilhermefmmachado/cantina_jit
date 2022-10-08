@@ -2,6 +2,7 @@ class ItemCardapio {
   String nome;
   String tipo;
   double preco;
+  int limQtdePorSelecao;
   int qtdeSelecionadaCliente = 0;
 
   bool isSelecionadoCardapio = false;
@@ -13,6 +14,7 @@ class ItemCardapio {
     required this.nome,
     required this.tipo,
     required this.preco,
+    required this.limQtdePorSelecao,
   });
 
   Map<String, dynamic> get obterDadosEssenciaisProduto {

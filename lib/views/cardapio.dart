@@ -15,9 +15,14 @@ class CardapioView extends StatefulWidget {
 }
 
 // TODO: IMPLEMENTAR ÚLTIMAS MUDANÇAS DO BANCO DE DADOS E BACKEND
+/* 
+  todo:
+  - Campo limite, recepção do add produto, recepção do cardápio.
+*/
 class _CardapioViewState extends State<CardapioView> {
-  /*String phpUrl = "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";*/
-  String phpUrl = "http://192.168.137.186/projetos_flutter/cantina_jit_backend/index.php";
+  String phpUrl =
+      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";
+  /*String phpUrl = "http://192.168.137.186/projetos_flutter/cantina_jit_backend/index.php";*/
   late List dadosCardapio;
   List<ItemCardapio> listaProdutos = [];
 
@@ -32,9 +37,12 @@ class _CardapioViewState extends State<CardapioView> {
       setState(() {
         for (var i = 0; i < dadosCardapio.length; i++) {
           listaProdutos.add(ItemCardapio(
-              nome: dadosCardapio[i]["nome_produto"],
-              tipo: dadosCardapio[i]["tipo_produto"],
-              preco: double.parse(dadosCardapio[i]["preco"])));
+            nome: dadosCardapio[i]["nome_produto"],
+            tipo: dadosCardapio[i]["tipo_produto"],
+            preco: double.parse(dadosCardapio[i]["preco"]),
+            limQtdePorSelecao:
+                int.parse(dadosCardapio[i]["lim_qtde_por_selecao"]),
+          ));
         }
       });
     }
@@ -59,6 +67,7 @@ class _CardapioViewState extends State<CardapioView> {
                 return CheckboxListTile(
                   activeColor: _ckbxColor,
                   title: Text(listaProdutos[index].nome),
+                  subtitle: Text("R\$ ${listaProdutos[index].preco}"),
                   value: listaProdutos[index].isSelecionadoCardapio,
                   onChanged: (bool? value) {
                     setState(() {
