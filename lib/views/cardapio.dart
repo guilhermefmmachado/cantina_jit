@@ -54,9 +54,7 @@ class _CardapioViewState extends State<CardapioView> {
     String resumo = "";
     for (var i = 0; i < dadosPedido.length; i++) {
       resumo +=
-          "Item: ${dadosPedido[i]["nome"]}; \nQuantidade: ${dadosPedido[i]["qtde"]}; \nPreço total: ${NumberFormat.simpleCurrency(
-                            locale: "pt-BR", decimalDigits: 2)
-                        .format(dadosPedido[i]["preco-total"])};\n\n";
+          "Item: ${dadosPedido[i]["nome"]}; \nQuantidade: ${dadosPedido[i]["qtde"]}; \nPreço total: ${NumberFormat.simpleCurrency(locale: "pt-BR", decimalDigits: 2).format(dadosPedido[i]["preco-total"])};\n\n";
     }
     return resumo;
   }
@@ -68,7 +66,7 @@ class _CardapioViewState extends State<CardapioView> {
     super.initState();
     listarProdutos();
   }
-  
+
   // ! VARIÁVEL TEMPORÁRIA
   int TEMPnumPedidosRealizados = 1;
 
