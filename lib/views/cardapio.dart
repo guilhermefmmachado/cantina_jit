@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cantina_jit/models/pedido_model.dart';
 import 'package:intl/intl.dart';
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:cantina_jit/models/item_cardapio.dart';
@@ -17,6 +18,7 @@ class CardapioView extends StatefulWidget {
 /* 
   todo:
   - Campo limite, recepção do add produto, recepção do cardápio.
+  ! CHEGUEI EM UM PONTO EM QUE AS CONTAS SÃO IMPORTANTES! PARA PROGREDIR
 */
 class _CardapioViewState extends State<CardapioView> {
   String phpUrl =
@@ -47,6 +49,18 @@ class _CardapioViewState extends State<CardapioView> {
     }
   }
 
+  String resumoPedido(PedidoModel pedido) {
+    List<Map> dadosPedido = pedido.getDadosEssenciaisItens;
+    String resumo = "";
+    for (var i = 0; i < dadosPedido.length; i++) {
+      resumo +=
+          "Item: ${dadosPedido[i]["nome"]}; \nQuantidade: ${dadosPedido[i]["qtde"]}; \nPreço total: ${NumberFormat.simpleCurrency(
+                            locale: "pt-BR", decimalDigits: 2)
+                        .format(dadosPedido[i]["preco-total"])};\n\n";
+    }
+    return resumo;
+  }
+
   void doNothing(BuildContext context) {}
 
   @override
@@ -54,6 +68,9 @@ class _CardapioViewState extends State<CardapioView> {
     super.initState();
     listarProdutos();
   }
+  
+  // ! VARIÁVEL TEMPORÁRIA
+  int TEMPnumPedidosRealizados = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -144,6 +161,70 @@ class _CardapioViewState extends State<CardapioView> {
                           content: const Text(
                               "Você não selecionou um ou mais produtos, portanto não poderá fazer um pedido."),
                           actions: <Widget>[
+                            TextButton(
+                              child: const Text("Ok"),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                  // ! CONDIÇÃO COM VARIÁVEIS A SER SUBSTITUÍDAS NO FUTURO (TEMPnumPedidosRealizados)
+                  if (TEMPnumPedidosRealizados >= 1 &&
+                      listaProdutosSelecionados.contains(true)) {
+                    List<ItemCardapio> itensPedido = [];
+                    for (var item in listaProdutos) {
+                      if (item.isSelecionadoCardapio) {
+                        itensPedido.add(item);
+                      }
+                    }
+                    PedidoModel novoPedido =
+                        PedidoModel(itensPedido: itensPedido);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text(
+                              "Você já tem um ou mais pedidos em andamento"),
+                          content: Text(
+                              "Você tem certeza que deseja fazer mais um pedido?\n\nEste é o resumo do seu pedido:\n${resumoPedido(novoPedido)}"),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text("Cancelar"),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                            TextButton(
+                              child: const Text("Sim"),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                  if (TEMPnumPedidosRealizados == 0 &&
+                      listaProdutosSelecionados.contains(true)) {
+                    List<ItemCardapio> itensPedido = [];
+                    for (var item in listaProdutos) {
+                      if (item.isSelecionadoCardapio) {
+                        itensPedido.add(item);
+                      }
+                    }
+                    PedidoModel novoPedido =
+                        PedidoModel(itensPedido: itensPedido);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text("Este é o seu pedido"),
+                          content: SingleChildScrollView(
+                              child: Text(resumoPedido(novoPedido))),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text("Cancelar"),
+                              onPressed: () => Navigator.pop(context),
+                            ),
                             TextButton(
                               child: const Text("Ok"),
                               onPressed: () => Navigator.pop(context),
