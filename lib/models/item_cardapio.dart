@@ -39,6 +39,20 @@ class ItemCardapio {
     if (!isSelecionadoCardapio) qtdeSelecionadaCliente = 0;
   }
 
+  // Métodos do Slidable
+  acrescentarQtdeSelecionadoCliente() {
+    if (isSelecionadoCardapio && qtdeSelecionadaCliente <= limQtdePorSelecao) {
+      qtdeSelecionadaCliente = qtdeSelecionadaCliente + 1;
+    }
+  }
+
+  retirarQtdeSelecionadoCliente() {
+    if (isSelecionadoCardapio && qtdeSelecionadaCliente > 1) {
+      qtdeSelecionadaCliente = qtdeSelecionadaCliente - 1;
+    }
+  }
+  // Fim métodos do Slidable
+
   set definirEstoque(int qtdeProdutosDisponiveis) {
     estoque = qtdeProdutosDisponiveis;
   }

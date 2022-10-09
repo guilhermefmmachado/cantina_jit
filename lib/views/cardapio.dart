@@ -1,10 +1,9 @@
 import 'dart:convert';
+import 'package:intl/intl.dart';
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
-import 'package:cantina_jit/controllers/cardapio_controller.dart';
 import 'package:cantina_jit/models/item_cardapio.dart';
-import 'package:cantina_jit/widgets/cardapios_tab.dart';
-import 'package:cantina_jit/widgets/contudo_cardapios_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:http/http.dart' as http;
 
 class CardapioView extends StatefulWidget {
@@ -48,6 +47,8 @@ class _CardapioViewState extends State<CardapioView> {
     }
   }
 
+  void doNothing(BuildContext context) {}
+
   @override
   void initState() {
     super.initState();
@@ -64,20 +65,57 @@ class _CardapioViewState extends State<CardapioView> {
             child: ListView.builder(
               itemCount: listaProdutos.isNotEmpty ? listaProdutos.length : 0,
               itemBuilder: (BuildContext context, int index) {
-                return CheckboxListTile(
-                  activeColor: _ckbxColor,
-                  title: Text(listaProdutos[index].nome),
-                  subtitle: Text("R\$ ${listaProdutos[index].preco}"),
-                  value: listaProdutos[index].isSelecionadoCardapio,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      listaProdutos[index].selecionarProduto = value!;
-                      listaProdutos[index].addQtdeSelecionadoCliente();
-                      listaProdutos[index].remQtdeSelecionadoCliente();
-                    });
-                    print(
-                        "${listaProdutos[index].nome}, ${listaProdutos[index].isSelecionadoCardapio}");
-                  },
+                return Slidable(
+                  endActionPane: ActionPane(
+                    motion: DrawerMotion(),
+                    children: [
+                      SlidableAction(
+                        autoClose: false,
+                        backgroundColor: AppColorPalette.redMain,
+                        foregroundColor: AppColorPalette.white,
+                        icon: Icons.remove,
+                        onPressed: (context) {
+                          listaProdutos[index].retirarQtdeSelecionadoCliente();
+                          setState(() {});
+                        },
+                      ),
+                      SlidableAction(
+                        autoClose: false,
+                        backgroundColor: AppColorPalette.whiteAux,
+                        foregroundColor: AppColorPalette.black,
+                        label: "${listaProdutos[index].qtdeSelecionadaCliente}",
+                        onPressed: doNothing,
+                      ),
+                      SlidableAction(
+                        autoClose: false,
+                        backgroundColor: AppColorPalette.greenMain,
+                        foregroundColor: AppColorPalette.white,
+                        icon: Icons.add,
+                        onPressed: (context) {
+                          listaProdutos[index]
+                              .acrescentarQtdeSelecionadoCliente();
+                          setState(() {});
+                        },
+                      ),
+                    ],
+                  ),
+                  child: CheckboxListTile(
+                    activeColor: _ckbxColor,
+                    title: Text(listaProdutos[index].nome),
+                    subtitle: Text(NumberFormat.simpleCurrency(
+                            locale: "pt-BR", decimalDigits: 2)
+                        .format(listaProdutos[index].preco)),
+                    value: listaProdutos[index].isSelecionadoCardapio,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        listaProdutos[index].selecionarProduto = value!;
+                        listaProdutos[index].addQtdeSelecionadoCliente();
+                        listaProdutos[index].remQtdeSelecionadoCliente();
+                      });
+                      print(
+                          "${listaProdutos[index].nome}, ${listaProdutos[index].isSelecionadoCardapio}");
+                    },
+                  ),
                 );
               },
             ),
@@ -92,7 +130,29 @@ class _CardapioViewState extends State<CardapioView> {
               padding: const EdgeInsets.all(10),
               child: ElevatedButton(
                 onPressed: () {
-                  print("Funciona...");
+                  // print("Funciona...");
+                  List<bool> listaProdutosSelecionados = [];
+                  for (var item in listaProdutos) {
+                    listaProdutosSelecionados.add(item.isSelecionadoCardapio);
+                  }
+                  if (!listaProdutosSelecionados.contains(true)) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text("Pedido inválido"),
+                          content: const Text(
+                              "Você não selecionou um ou mais produtos, portanto não poderá fazer um pedido."),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text("Ok"),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
                 },
                 child: Text("Realizar pedido"),
                 style: ElevatedButton.styleFrom(
