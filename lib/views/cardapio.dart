@@ -18,7 +18,7 @@ class CardapioView extends StatefulWidget {
 /* 
   todo:
   - Campo limite, recepção do add produto, recepção do cardápio.
-  ! CHEGUEI EM UM PONTO EM QUE AS CONTAS SÃO IMPORTANTES! PARA PROGREDIR
+  ! CHEGUEI EM UM PONTO EM QUE AS CONTAS SÃO IMPORTANTES PARA PROGREDIR!
 */
 class _CardapioViewState extends State<CardapioView> {
   String phpUrl =
@@ -58,7 +58,8 @@ class _CardapioViewState extends State<CardapioView> {
     }
     return resumo;
   }
-
+  
+  // Função para partes sem qualquer interação do slidable.
   void doNothing(BuildContext context) {}
 
   @override
