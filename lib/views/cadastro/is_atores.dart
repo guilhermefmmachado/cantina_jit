@@ -15,13 +15,13 @@ class IsClienteFuncionarioGerenteView extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
-          Center(
+          const Center(
             child: Text("Informe-nos quem é você ao usar nosso app."),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
             child: ElevatedButton(
@@ -36,7 +36,7 @@ class IsClienteFuncionarioGerenteView extends StatelessWidget {
                 primary: AppColorPalette.redMain,
               ),
               child: Row(
-                children: [
+                children: const <Widget>[
                   SizedBox(width: 24),
                   Icon(Icons.person_outline_rounded),
                   SizedBox(width: 8),
@@ -55,7 +55,7 @@ class IsClienteFuncionarioGerenteView extends StatelessWidget {
                 primary: AppColorPalette.redMain,
               ),
               child: Row(
-                children: [
+                children: const <Widget>[
                   SizedBox(width: 24),
                   Icon(Icons.room_service_outlined),
                   SizedBox(width: 8),
@@ -78,7 +78,7 @@ class IsClienteFuncionarioGerenteView extends StatelessWidget {
                 primary: AppColorPalette.redMain,
               ),
               child: Row(
-                children: [
+                children: const <Widget>[
                   SizedBox(width: 24),
                   Icon(Icons.account_box_rounded),
                   SizedBox(width: 8),
