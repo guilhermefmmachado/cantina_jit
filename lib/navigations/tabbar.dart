@@ -13,7 +13,7 @@ class Tabbar extends StatefulWidget {
 }
 
 class _TabbarState extends State<Tabbar> {
-  final String _title = "Aqui fica o nome da escola";
+  final String _title = "Cantina JIT";
   int currentIndex = 0;
   final views = [
     HomeView(),
