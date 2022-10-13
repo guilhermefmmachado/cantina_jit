@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
               ],
             ),
             HomeColoredButton(
-              cor: AppColorPalette.redSec,
+              cor: AppColorPalette.redMain,
               text: "Faça seu login aqui",
               actorLevel: 0,
               navigation: "tela-login",
