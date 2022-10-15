@@ -1,14 +1,44 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
+import 'package:cantina_jit/views/login.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileView extends StatefulWidget {
-  const ProfileView({ Key? key }) : super(key: key);
+  const ProfileView({Key? key}) : super(key: key);
 
   @override
   State<ProfileView> createState() => _ProfileViewState();
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  String? _email = "";
+
+  Future getEmail() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      _email = preferences.getString("email");
+    });
+  }
+
+  Future logOut() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.remove("email");
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        maintainState: false,
+        builder: (context) => const LoginView(),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    getEmail();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,17 +47,17 @@ class _ProfileViewState extends State<ProfileView> {
         child: Column(
           children: [
             SizedBox(
-              //* Foto de perfil
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: const <Widget>[
-                  CircleAvatar(
-                    backgroundImage: AssetImage('assets/system_images/user-image.png'),
-                    radius: 50,
-                  )
-                ],
-              )
-            ),
+                //* Foto de perfil
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: const <Widget>[
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage('assets/system_images/user-image.png'),
+                      radius: 50,
+                    )
+                  ],
+                )),
             Container(
               //* Nome do estudante
               padding: const EdgeInsets.only(top: 20, left: 15),
@@ -37,41 +67,36 @@ class _ProfileViewState extends State<ProfileView> {
                 children: const <Widget>[
                   Text(
                     'Nome do Estudante',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Icon(Icons.mode_edit)
-                  )
+                      padding: EdgeInsets.only(left: 10),
+                      child: Icon(Icons.mode_edit))
                 ],
               ),
             ),
-            Container(
-              //* Conexões
-              child: Row(
-                children: const <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 15, top: 25),
-                    child: Text(
-                      'Conexões', 
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16
-                      ),
-                    ),
-                  )
-                ],
-              ),
+            const SizedBox(
+              height: 25,
             ),
-            SizedBox(  
+            _email == "" ? const Text("") : Text(_email!),
+            Row(
+              children: const <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 15, top: 25),
+                  child: Text(
+                    'Conexões',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 140,
               child: Row(
                 children: [
                   //* Logo
+                  /*
                   const Expanded(
                     child: SizedBox(
                       height: 140,
@@ -80,6 +105,7 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                     ),
                   ),
+                  */
                   //* Nome da escola
                   Expanded(
                     child: Container(
@@ -89,10 +115,8 @@ class _ProfileViewState extends State<ProfileView> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const <Widget>[
                           Text(
-                            'Escola Técnica Pandiá Calógeras', 
-                            style: TextStyle(
-                              fontSize: 16
-                            ),
+                            'Escola. . .',
+                            style: TextStyle(fontSize: 16),
                           )
                         ],
                       ),
@@ -100,37 +124,30 @@ class _ProfileViewState extends State<ProfileView> {
                   )
                 ],
               ),
-            ), 
+            ),
             SizedBox(
               //* Botão
               width: MediaQuery.of(context).size.width - 80,
               child: ElevatedButton(
                 //* estilos do botão
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(AppColorPalette.redMain),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(AppColorPalette.redMain),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)
-                    )
-                  )
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
                 ),
+                child: const Text("Sair do perfil"),
                 onPressed: (() {
                   //? Adicionar uma função ao botão
+                  logOut();
                 }),
-                //* ícone e texto
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.add, size: 21,),
-                    Text('alterar conexão'.toUpperCase())
-                  ],
-                ),
               ),
-            )
+            ),
           ],
-        ),   
+        ),
       ),
     );
   }
 }
-

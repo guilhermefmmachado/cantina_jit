@@ -28,6 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.2
+  double_back_to_close_app: ^2.1.0
   flutter:
     sdk: flutter
   flutter_slidable: ^2.0.0

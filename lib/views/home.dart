@@ -33,12 +33,6 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-            const HomeColoredButton(
-              cor: AppColorPalette.redMain,
-              text: "Faça seu login aqui",
-              actorLevel: 0,
-              navigation: "tela-login",
-            ),
             Container(
               width: MediaQuery.of(context).size.width - 32,
               height: 240,

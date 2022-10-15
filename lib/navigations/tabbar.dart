@@ -24,35 +24,39 @@ class _TabbarState extends State<Tabbar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // APP BAR DO TOPO
-      appBar: AppBar(
-        title: Text(_title),
-        centerTitle: true,
-        backgroundColor: AppColorPalette.redMain,
-      ),
-      body: IndexedStack(
-        children: views,
-        index: currentIndex,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (index) => setState(() => currentIndex = index),
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: AppColorPalette.white,
-        selectedItemColor: AppColorPalette.redMain,
-        unselectedItemColor: AppColorPalette.blackAux,
-        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined), label: "Início"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.menu_book_rounded), label: "Cardápio"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.room_service_outlined), label: "Pedido"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_rounded), label: "Perfil"),
-        ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        // APP BAR DO TOPO
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text(_title),
+          centerTitle: true,
+          backgroundColor: AppColorPalette.redMain,
+        ),
+        body: IndexedStack(
+          children: views,
+          index: currentIndex,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: (index) => setState(() => currentIndex = index),
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: AppColorPalette.white,
+          selectedItemColor: AppColorPalette.redMain,
+          unselectedItemColor: AppColorPalette.blackAux,
+          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home_outlined), label: "Início"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.menu_book_rounded), label: "Cardápio"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.room_service_outlined), label: "Pedido"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_rounded), label: "Perfil"),
+          ],
+        ),
       ),
     );
   }
