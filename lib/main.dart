@@ -1,10 +1,8 @@
-import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:flutter/material.dart';
 import 'package:cantina_jit/navigations/tabbar.dart';
-import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -22,7 +20,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: Tabbar(),
+      home: const Tabbar(),
     );
   }
 }

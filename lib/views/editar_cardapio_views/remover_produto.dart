@@ -13,10 +13,10 @@ class _RemoverProdutoViewState extends State<RemoverProdutoView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Remover Produto"),
+        title: const Text("Remover Produto"),
         backgroundColor: AppColorPalette.redMain,
       ),
-      body: Center(
+      body: const Center(
         child: Text("Funciona..."),
       ),
     );

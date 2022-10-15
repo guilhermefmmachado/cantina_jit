@@ -137,7 +137,7 @@ class _CadastroClienteViewState extends State<CadastroClienteView> {
                           //cadastrarEscola();
                         }
                       },
-                      child: Text(/*enviando ? "Cadastrando..." : */"Cadastrar"),
+                      child: const Text(/*enviando ? "Cadastrando..." : */"Cadastrar"),
                       style: ElevatedButton.styleFrom(
                         primary: AppColorPalette.redMain,
                       ),

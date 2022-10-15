@@ -15,7 +15,7 @@ class Tabbar extends StatefulWidget {
 class _TabbarState extends State<Tabbar> {
   final String _title = "Cantina JIT";
   int currentIndex = 0;
-  final views = [
+  final views = const [
     HomeView(),
     CardapioView(),
     PedidoView(),
@@ -31,7 +31,10 @@ class _TabbarState extends State<Tabbar> {
         centerTitle: true,
         backgroundColor: AppColorPalette.redMain,
       ),
-      body: IndexedStack(children: views, index: currentIndex,),
+      body: IndexedStack(
+        children: views,
+        index: currentIndex,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (index) => setState(() => currentIndex = index),
@@ -40,14 +43,14 @@ class _TabbarState extends State<Tabbar> {
         selectedItemColor: AppColorPalette.redMain,
         unselectedItemColor: AppColorPalette.blackAux,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-        items: [
-          const BottomNavigationBarItem(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined), label: "Início"),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
               icon: Icon(Icons.menu_book_rounded), label: "Cardápio"),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
               icon: Icon(Icons.room_service_outlined), label: "Pedido"),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
               icon: Icon(Icons.person_rounded), label: "Perfil"),
         ],
       ),

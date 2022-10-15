@@ -10,7 +10,7 @@ class PedidoView extends StatefulWidget {
 class _PedidoViewState extends State<PedidoView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(child: Text("Pedido Funciona!")),
     );
   }

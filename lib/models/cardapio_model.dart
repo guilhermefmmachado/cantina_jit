@@ -1,5 +1,3 @@
-import 'package:cantina_jit/widgets/cardapios_tab.dart';
-
 class CardapioModel {
   bool accessBttnFinalizarPedido = false;
 

@@ -1,7 +1,6 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:cantina_jit/views/cadastro/is_atores.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);

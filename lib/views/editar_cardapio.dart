@@ -9,12 +9,12 @@ class EditarCardapioView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Editar Cardápio"),
+        title: const Text("Editar Cardápio"),
         backgroundColor: AppColorPalette.redMain,
       ),
       body: SafeArea(
         child: Column(
-          children: [
+          children: const <Widget>[
             HomeColoredButton(
               text: "Adicionar produto",
               actorLevel: 2,

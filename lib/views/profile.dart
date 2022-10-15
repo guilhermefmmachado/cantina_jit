@@ -13,14 +13,14 @@ class _ProfileViewState extends State<ProfileView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: 50),
+        padding: const EdgeInsets.only(top: 50),
         child: Column(
           children: [
             SizedBox(
               //* Foto de perfil
               width: MediaQuery.of(context).size.width,
               child: Column(
-                children: [
+                children: const <Widget>[
                   CircleAvatar(
                     backgroundImage: AssetImage('assets/system_images/user-image.png'),
                     radius: 50,
@@ -30,11 +30,11 @@ class _ProfileViewState extends State<ProfileView> {
             ),
             Container(
               //* Nome do estudante
-              padding: EdgeInsets.only(top: 20, left: 15),
+              padding: const EdgeInsets.only(top: 20, left: 15),
               width: MediaQuery.of(context).size.width,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const <Widget>[
                   Text(
                     'Nome do Estudante',
                     style: TextStyle(
@@ -52,7 +52,7 @@ class _ProfileViewState extends State<ProfileView> {
             Container(
               //* Conexões
               child: Row(
-                children: [
+                children: const <Widget>[
                   Padding(
                     padding: EdgeInsets.only(left: 15, top: 25),
                     child: Text(
@@ -72,7 +72,7 @@ class _ProfileViewState extends State<ProfileView> {
               child: Row(
                 children: [
                   //* Logo
-                  Expanded(
+                  const Expanded(
                     child: SizedBox(
                       height: 140,
                       child: Image(
@@ -83,11 +83,11 @@ class _ProfileViewState extends State<ProfileView> {
                   //* Nome da escola
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       height: 140,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const <Widget>[
                           Text(
                             'Escola Técnica Pandiá Calógeras', 
                             style: TextStyle(
@@ -121,7 +121,7 @@ class _ProfileViewState extends State<ProfileView> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.add, size: 21,),
+                    const Icon(Icons.add, size: 21,),
                     Text('alterar conexão'.toUpperCase())
                   ],
                 ),
