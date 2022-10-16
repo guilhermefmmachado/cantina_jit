@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class CadastroClienteView extends StatefulWidget {
   const CadastroClienteView({Key? key}) : super(key: key);
@@ -17,12 +20,58 @@ class _CadastroClienteViewState extends State<CadastroClienteView> {
 
   bool _isPasswordFieldObscure = true;
 
-  //late bool erro, enviando, sucesso;
-  //late String msg;
+  late bool erro, enviando, sucesso;
+  late String msg;
+
+  @override
+  void initState() {
+    erro = false;
+    enviando = false;
+    sucesso = false;
+    msg = "";
+    super.initState();
+  }
 
   String phpUrl =
-      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";
+      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/controllers/cliente_ctl.php";
   // ! CUIDADO AO USAR NA ESCOLA, ERRO DE IP.
+
+  Future<void> cadastrarCliente() async {
+    var response = await http.post(Uri.parse(phpUrl), body: {
+      // $novoCliente = new Cliente($_POST["nome"], $_POST["emailcliente"], $_POST["senhacliente"], $_POST["emailescola"]);
+      "nome": nomeClienteCtl.text,
+      "emailcliente": emailClienteCtl.text,
+      "senhacliente": senhaClienteCtl.text,
+      "emailescola": emailClienteEscolaCtl.text
+    });
+
+    if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+      if (data["erro"]) {
+        setState(() {
+          enviando = false;
+          erro = true;
+          msg = data["msg"];
+        });
+      } else {
+        nomeClienteCtl.text = "";
+        emailClienteCtl.text = "";
+        senhaClienteCtl.text = "";
+        emailClienteEscolaCtl.text = "";
+
+        setState(() {
+          enviando = false;
+          sucesso = true;
+        });
+      }
+    } else {
+      setState(() {
+        erro = true;
+        msg = "Erro no envio do conteúdo. ${response.statusCode}";
+        enviando = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,27 +182,26 @@ class _CadastroClienteViewState extends State<CadastroClienteView> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           // * É aqui onde a programação para alterar o BD acontece
-                          print("Funciona...");
-                          //cadastrarEscola();
+                          //print("Funciona...")
+                          cadastrarCliente();
                         }
                       },
-                      child: const Text(/*enviando ? "Cadastrando..." : */"Cadastrar"),
+                      child: const Text(
+                          /*enviando ? "Cadastrando..." : */ "Cadastrar"),
                       style: ElevatedButton.styleFrom(
                         primary: AppColorPalette.redMain,
                       ),
                     ),
                   ),
                 ),
-                /*
                 Center(
                   child: Text(
                     sucesso
-                        ? "Cadastro realizado, agora faça seu login na página de login e cofigure sua cantina."
+                        ? "Cadastro realizado, agora faça seu login na página de login."
                         : msg,
                     textAlign: TextAlign.center,
                   ),
-                )
-                */
+                ),
               ],
             ),
           ),

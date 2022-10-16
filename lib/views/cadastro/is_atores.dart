@@ -1,6 +1,6 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:cantina_jit/views/cadastro/cadastro_escola.dart';
-import 'package:cantina_jit/views/cadastro/cadastro_estudante.dart';
+import 'package:cantina_jit/views/cadastro/cadastro_cliente.dart';
 import 'package:cantina_jit/views/cadastro/cadastro_funcionario.dart';
 import 'package:flutter/material.dart';
 

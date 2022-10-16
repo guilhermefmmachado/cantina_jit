@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cantina_jit">
    <application
-        android:label="cantina_jit"
+        android:label="Cantina JIT"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
