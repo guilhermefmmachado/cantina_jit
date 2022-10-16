@@ -27,10 +27,12 @@ class _CardapioViewState extends State<CardapioView> {
   /*String phpUrl = "http://192.168.137.186/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";*/
   late List dadosCardapio;
   List<ItemCardapio> listaProdutos = [];
-
-  Color? _ckbxColor = AppColorPalette.redMain;
+  
+  /*
   bool _isBtnFinalizarEnabled = false;
   Color? _btnColor = AppColorPalette.greenMain;
+  */
+  final Color? _ckbxColor = AppColorPalette.redMain;
 
   Future listarProdutos() async {
     http.Response response = await http.get(Uri.parse(phpUrl));
@@ -84,7 +86,7 @@ class _CardapioViewState extends State<CardapioView> {
               itemBuilder: (BuildContext context, int index) {
                 return Slidable(
                   endActionPane: ActionPane(
-                    motion: DrawerMotion(),
+                    motion: const DrawerMotion(),
                     children: [
                       SlidableAction(
                         autoClose: false,
@@ -235,7 +237,7 @@ class _CardapioViewState extends State<CardapioView> {
                     );
                   }
                 },
-                child: Text("Realizar pedido"),
+                child: const Text("Realizar pedido"),
                 style: ElevatedButton.styleFrom(
                   primary: AppColorPalette.greenMain,
                 ),

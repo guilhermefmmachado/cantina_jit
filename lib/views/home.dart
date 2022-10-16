@@ -1,5 +1,4 @@
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
-import 'package:cantina_jit/views/editar_cardapio.dart';
 import 'package:cantina_jit/widgets/home_bttn_receber_pedido.dart';
 import 'package:cantina_jit/widgets/home_colored_button.dart';
 import 'package:cantina_jit/widgets/home_header.dart';
@@ -22,7 +21,7 @@ class _HomeViewState extends State<HomeView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            HomeHeader(),
+            const HomeHeader(),
             Row(
               children: [
                 Padding(
@@ -34,16 +33,10 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-            HomeColoredButton(
-              cor: AppColorPalette.redMain,
-              text: "Faça seu login aqui",
-              actorLevel: 0,
-              navigation: "tela-login",
-            ),
             Container(
               width: MediaQuery.of(context).size.width - 32,
               height: 240,
-              margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
                 color: AppColorPalette.white,
                 borderRadius: BorderRadius.circular(4),
@@ -53,9 +46,9 @@ class _HomeViewState extends State<HomeView> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     height: 32,
-                    padding: EdgeInsets.symmetric(horizontal: 8),
-                    margin: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    margin: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
                       color: AppColorPalette.whiteAux,
                     ),
                     child: Row(
@@ -64,43 +57,43 @@ class _HomeViewState extends State<HomeView> {
                         RichText(
                           text: TextSpan(
                             text: "Pedido atual ",
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: AppColorPalette.greenMain,
                               fontWeight: FontWeight.bold,
                             ),
                             children: [
                               TextSpan(
-                                text: "${estadoPedido}",
-                                style: TextStyle(
+                                text: estadoPedido,
+                                style: const TextStyle(
                                   color: AppColorPalette.black,
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              TextSpan(text: "."),
+                              const TextSpan(text: "."),
                             ],
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Divider(),
+                  const Divider(),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     height: 150,
-                    margin: EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(8),
                     child: Row(
                       children: [
                         Expanded(
                           flex: 2,
                           child: Container(
                             height: 150,
-                            margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
+                            margin: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                            padding: const EdgeInsets.all(8),
+                            decoration: const BoxDecoration(
                               color: AppColorPalette.whiteAux,
                             ),
                             child: RichText(
-                              text: TextSpan(
+                              text: const TextSpan(
                                 text: "Dados do pedido atual:\n",
                                 style: TextStyle(
                                   color: AppColorPalette.black,
@@ -113,12 +106,12 @@ class _HomeViewState extends State<HomeView> {
                           flex: 1,
                           child: Container(
                             height: 150,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: AppColorPalette.whiteAux,
                             ),
-                            child: Center(
+                            child: const Center(
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: BttnReceberPedido(
                                   isEnabled: true,
                                 ),
@@ -133,7 +126,7 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             // NOVAS ROWS E GESTURE DETECTORS
-            HomeNavButton(
+            const HomeNavButton(
               imgPath: "assets/system_images/cardapio-button-wallpaper-02.jpg",
               text: "Editar Cardápio",
               actorLevel: 2,

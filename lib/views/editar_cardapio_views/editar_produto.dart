@@ -13,10 +13,10 @@ class _EditarProdutoViewState extends State<EditarProdutoView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Editar Produto"),
+        title: const Text("Editar Produto"),
         backgroundColor: AppColorPalette.redMain,
       ),
-      body: Center(
+      body: const Center(
         child: Text("Funciona..."),
       ),
     );
