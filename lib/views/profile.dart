@@ -66,7 +66,7 @@ class _ProfileViewState extends State<ProfileView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const <Widget>[
                   Text(
-                    'Nome do Estudante',
+                    'Guilherme Fernandes',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Padding(
@@ -115,7 +115,7 @@ class _ProfileViewState extends State<ProfileView> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const <Widget>[
                           Text(
-                            'Escola. . .',
+                            'Escola Técnica Pandiá Calógeras',
                             style: TextStyle(fontSize: 16),
                           )
                         ],
