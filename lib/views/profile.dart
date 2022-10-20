@@ -13,11 +13,13 @@ class ProfileView extends StatefulWidget {
 
 class _ProfileViewState extends State<ProfileView> {
   String? _email = "";
+  String? _nomeUsuario = "";
 
   Future getEmail() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       _email = preferences.getString("email");
+      _nomeUsuario = preferences.getString("nome");
     });
   }
 
@@ -64,12 +66,12 @@ class _ProfileViewState extends State<ProfileView> {
               width: MediaQuery.of(context).size.width,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
-                  Text(
-                    'Guilherme Fernandes',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Padding(
+                children: <Widget>[
+                  _nomeUsuario == "" ? const Text("") :  Text(
+                    _nomeUsuario!,
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ) ,
+                  const Padding(
                       padding: EdgeInsets.only(left: 10),
                       child: Icon(Icons.mode_edit))
                 ],

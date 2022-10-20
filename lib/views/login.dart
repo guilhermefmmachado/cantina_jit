@@ -66,6 +66,7 @@ class _LoginViewState extends State<LoginView> {
         if (sucesso) {
           SharedPreferences preferences = await SharedPreferences.getInstance();
           preferences.setString("email", emailCtl.text);
+          preferences.setString("nome", data["nome_usuario"].toString());
 
           Navigator.push(
             context,
@@ -105,10 +106,12 @@ class _LoginViewState extends State<LoginView> {
                   SizedBox(
                     height: 8,
                   ),
-                  Text("Bem-vindo à Cantina JIT", style: TextStyle(fontSize: 24)),
+                  Text("Bem-vindo à Cantina JIT",
+                      style: TextStyle(fontSize: 24)),
                   Text(
                     "Faça seu login e aproveite!",
-                    style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+                    style:
+                        TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
                   ),
                 ],
               ),
