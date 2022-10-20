@@ -20,8 +20,11 @@ class _CadastroClienteViewState extends State<CadastroClienteView> {
   //late bool erro, enviando, sucesso;
   //late String msg;
 
+  /*String phpUrl =
+      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";*/
   String phpUrl =
-      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/index.php";
+      "http://192.168.102.76/projetos_flutter/cantina_jit_backend/index.php";
+
   // ! CUIDADO AO USAR NA ESCOLA, ERRO DE IP.
 
   @override
@@ -137,7 +140,8 @@ class _CadastroClienteViewState extends State<CadastroClienteView> {
                           //cadastrarEscola();
                         }
                       },
-                      child: Text(/*enviando ? "Cadastrando..." : */"Cadastrar"),
+                      child:
+                          Text(/*enviando ? "Cadastrando..." : */ "Cadastrar"),
                       style: ElevatedButton.styleFrom(
                         primary: AppColorPalette.redMain,
                       ),
