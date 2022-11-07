@@ -27,7 +27,7 @@ class _CadastroEscolaViewState extends State<CadastroEscolaView> {
   late bool erro, enviando, sucesso;
   late String msg;
   String phpUrl =
-      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/controllers/escola_ctl.php";
+      "http://192.168.95.131/projetos_flutter/cantina_jit_backend/controllers/escola_ctl.php";
   /*String phpUrl =
       "http://192.168.102.76/projetos_flutter/cantina_jit_backend/controllers/escola_ctl.php";*/
   // ! CUIDADO AO USAR NA ESCOLA, ERRO DE IP.

@@ -15,7 +15,7 @@ class RemoverProdutoView extends StatefulWidget {
 
 class _RemoverProdutoViewState extends State<RemoverProdutoView> {
   String phpUrl =
-      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";
+      "http://192.168.95.131/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";
   /*String phpUrl = "http://192.168.137.186/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";*/
   /*String phpUrl =
       "http://192.168.102.76/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";*/
@@ -49,7 +49,7 @@ class _RemoverProdutoViewState extends State<RemoverProdutoView> {
     }
   }
 
-  String phpUrlRemoverProduto = "http://192.168.15.9/projetos_flutter/cantina_jit_backend/controllers/rem_produto_ctl.php";
+  String phpUrlRemoverProduto = "http://192.168.95.131/projetos_flutter/cantina_jit_backend/controllers/rem_produto_ctl.php";
 
   Future<void> remProduto(String nomeProduto) async {
     var response = await http.post(Uri.parse(phpUrlRemoverProduto), body: {
