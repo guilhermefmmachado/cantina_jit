@@ -1,3 +1,4 @@
+import 'package:cantina_jit/auxiliar-classes/acesso.dart';
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:cantina_jit/widgets/home_bttn_receber_pedido.dart';
 import 'package:cantina_jit/widgets/home_colored_button.dart';
@@ -126,10 +127,10 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             // NOVAS ROWS E GESTURE DETECTORS
-            const HomeNavButton(
+            HomeNavButton(
               imgPath: "assets/system_images/cardapio-button-wallpaper-02.jpg",
               text: "Editar Cardápio",
-              actorLevel: 2,
+              actorLevel: Acesso.valorTipoUsuario,
               navigation: "editar-cardapio",
             )
           ],

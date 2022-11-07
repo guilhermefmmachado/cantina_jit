@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cantina_jit/auxiliar-classes/acesso.dart';
 import 'package:cantina_jit/auxiliar-classes/app_color_palette.dart';
 import 'package:cantina_jit/navigations/tabbar.dart';
 import 'package:cantina_jit/views/cadastro/is_atores.dart';
@@ -68,6 +69,8 @@ class _LoginViewState extends State<LoginView> {
         if (sucesso) {
           SharedPreferences preferences = await SharedPreferences.getInstance();
           preferences.setString("email", emailCtl.text);
+          // Acesso as funcionalidades dependendo do ator
+          Acesso.tipoUsuario(_valorAtoresDropdown);
 
           Navigator.push(
             context,
