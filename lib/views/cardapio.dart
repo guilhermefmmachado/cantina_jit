@@ -21,11 +21,11 @@ class CardapioView extends StatefulWidget {
   ! CHEGUEI EM UM PONTO EM QUE AS CONTAS SÃO IMPORTANTES PARA PROGREDIR!
 */
 class _CardapioViewState extends State<CardapioView> {
-  /*String phpUrl =
-      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";*/
-  /*String phpUrl = "http://192.168.137.186/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";*/
   String phpUrl =
-      "http://192.168.102.76/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";
+      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";
+  /*String phpUrl = "http://192.168.137.186/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";*/
+  /*String phpUrl =
+      "http://192.168.102.76/projetos_flutter/cantina_jit_backend/controllers/cardapio_ctl.php";*/
   late List dadosCardapio;
   List<ItemCardapio> listaProdutos = [];
   
@@ -73,7 +73,7 @@ class _CardapioViewState extends State<CardapioView> {
   }
 
   // ! VARIÁVEL TEMPORÁRIA
-  int TEMPnumPedidosRealizados = 1;
+  int TEMPnumPedidosRealizados = 0;
 
   @override
   Widget build(BuildContext context) {

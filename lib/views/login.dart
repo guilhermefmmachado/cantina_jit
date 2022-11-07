@@ -26,10 +26,10 @@ class _LoginViewState extends State<LoginView> {
   late bool erro, enviando, sucesso;
   late String msg;
 
-  /*String phpUrl =
-      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/controllers/login_ctl.php";*/
   String phpUrl =
-      "http://192.168.102.76/projetos_flutter/cantina_jit_backend/controllers/login_ctl.php";
+      "http://192.168.15.9/projetos_flutter/cantina_jit_backend/controllers/login_ctl.php";
+  /*String phpUrl =
+      "http://192.168.102.76/projetos_flutter/cantina_jit_backend/controllers/login_ctl.php";*/
   // ! CUIDADO AO USAR NA ESCOLA, ERRO DE IP.
 
   @override
