@@ -122,7 +122,7 @@ class _RemoverProdutoViewState extends State<RemoverProdutoView> {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           title: const Text("Você está removendo este produto"),
-                          content: const Text("Deseja prosseguir"),
+                          content: const Text("Deseja prosseguir?"),
                           actions: <Widget>[
                             TextButton(
                               child: const Text("Não"),
